@@ -1319,6 +1319,59 @@ test('course guide shape count matches its six routing bullets in both mirrors',
   }
 });
 
+test('public curriculum counts match the canonical lesson and artifact inventory', () => {
+  const root = path.resolve(__dirname, '..');
+  const roadmap = parseRoadmap(fs.readFileSync(path.join(root, 'ROADMAP.md'), 'utf8'));
+  const phases = parseReadme(fs.readFileSync(path.join(root, 'README.md'), 'utf8'), roadmap);
+  const artifacts = discoverArtifacts();
+  const lessons = phases.reduce((total, phase) => total + phase.lessons.length, 0);
+  const lessonDirectories = fs.readdirSync(path.join(root, 'phases'), { withFileTypes: true })
+    .filter(entry => entry.isDirectory() && /^\d+-/.test(entry.name))
+    .reduce((total, phase) => total + fs.readdirSync(path.join(root, 'phases', phase.name), { withFileTypes: true })
+      .filter(entry => entry.isDirectory() && /^\d+-/.test(entry.name)).length, 0);
+  const skills = artifacts.filter(artifact => artifact.kind === 'skill').length;
+  const prompts = artifacts.filter(artifact => artifact.kind === 'prompt').length;
+  const phaseCount = phases.length;
+
+  const readme = fs.readFileSync(path.join(root, 'README.md'), 'utf8');
+  const agents = fs.readFileSync(path.join(root, 'AGENTS.md'), 'utf8');
+  const banner = fs.readFileSync(path.join(root, 'assets', 'banner.svg'), 'utf8');
+  const homepage = fs.readFileSync(path.join(__dirname, 'index.html'), 'utf8');
+  const lessonPage = fs.readFileSync(path.join(__dirname, 'lesson.html'), 'utf8');
+  const ogImage = fs.readFileSync(path.join(__dirname, 'og-image.png'));
+
+  assert.equal(lessonDirectories, lessons, 'README lesson inventory must match numbered lesson directories');
+  assert.match(readme, new RegExp(`> ${lessons} lessons\\. ${phaseCount} phases\\.`));
+  assert.match(readme, new RegExp(`The repo ships ${skills} skills and ${prompts} prompts`));
+  assert.match(agents, new RegExp(`${lessons} lessons\\. ${phaseCount} phases\\.`));
+  assert.match(
+    banner,
+    new RegExp(`${phaseCount} PHASES\\s+·\\s+${lessons} LESSONS\\s+·\\s+${skills} SKILLS\\s+·\\s+${prompts} PROMPTS`)
+  );
+  assert.match(homepage, new RegExp(`${lessons} lessons\\. ${phaseCount} phases\\.`));
+  assert.match(lessonPage, new RegExp(`${lessons} lessons across ${phaseCount} phases`));
+  assert.equal(
+    ogImage.includes(Buffer.from(`AIFS_COUNTS: lessons=${lessons} phases=${phaseCount} skills=${skills} prompts=${prompts}`)),
+    true,
+    'social preview metadata must identify the counts rendered into the image'
+  );
+
+  const socialImageVersions = new Set();
+  for (const filename of fs.readdirSync(__dirname).filter(filename => filename.endsWith('.html'))) {
+    const source = fs.readFileSync(path.join(__dirname, filename), 'utf8');
+    for (const match of source.matchAll(/og-image\.png\?v=(\d+)/g)) {
+      socialImageVersions.add(match[1]);
+    }
+  }
+  for (const filename of ['lesson.js', 'certification.js']) {
+    const source = fs.readFileSync(path.join(root, 'api', filename), 'utf8');
+    for (const match of source.matchAll(/og-image\.png\?v=(\d+)/g)) {
+      socialImageVersions.add(match[1]);
+    }
+  }
+  assert.deepEqual([...socialImageVersions], ['4']);
+});
+
 test('repository exposes the canonical Model Context Protocol learning path only', () => {
   const root = path.resolve(__dirname, '..');
   const roadmap = parseRoadmap(fs.readFileSync(path.join(root, 'ROADMAP.md'), 'utf8'));

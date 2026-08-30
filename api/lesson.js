@@ -213,13 +213,13 @@ function lessonHead(entry, lessonPath, heading) {
     `  <link rel="canonical" href="${escapeHtml(canonical)}">`,
     `  <meta property="og:title" content="${escapeHtml(title)}">`,
     `  <meta property="og:description" content="${escapeHtml(description)}">`,
-    `  <meta property="og:image" content="${ORIGIN}/og-image.png?v=3">`,
+    `  <meta property="og:image" content="${ORIGIN}/og-image.png?v=4">`,
     `  <meta property="og:url" content="${escapeHtml(canonical)}">`,
     '  <meta property="og:type" content="article">',
     '  <meta name="twitter:card" content="summary_large_image">',
     `  <meta name="twitter:title" content="${escapeHtml(title)}">`,
     `  <meta name="twitter:description" content="${escapeHtml(description)}">`,
-    `  <meta name="twitter:image" content="${ORIGIN}/og-image.png?v=3">`,
+    `  <meta name="twitter:image" content="${ORIGIN}/og-image.png?v=4">`,
     `  <script type="application/ld+json" id="lessonJsonLd">${jsonForHtml(jsonLd)}</script>`,
   ].join('\n');
 }

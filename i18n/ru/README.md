@@ -64,6 +64,20 @@
 
 Сравните четыре основных направления и шесть карьерных маршрутов в [учебных маршрутах по AI Engineering](https://aiengineeringfromscratch.com/learning-paths.html).
 
+### Спонсоры
+
+<a href="https://serpapi.com/ai-engineering-from-scratch">
+  <img align="left" src="../../assets/sponsors/serpapi-banner.png" alt="SerpApi. API веб-поиска для ваших приложений с ИИ. Доступен в форматах Markdown и JSON для любой интеграции." width="600">
+</a>
+
+<p><br><b>Спасибо нашим спонсорам.</b></p>
+<p>Ваша поддержка помогает сохранять все уроки бесплатными и открытыми.</p>
+<p>
+  <a href="#supporters">Посмотреть всех сторонников</a><br>
+  <a href="../../SPONSORS.md">Become a sponsor</a>
+  <br clear="all">
+</p>
+
 ### Проходите каждый урок одинаково
 
 1. **Прочитайте** `docs/en.md` и объясните основную идею своими словами.
@@ -1351,36 +1365,13 @@ relative links inside lesson docs.
 ░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒
 ```
 
+<a id="supporters"></a>
+
 ## Поддержать проект
 
-Free, MIT-licensed, 523 lessons. The curriculum is maintained through cash sponsorships
-and approved Hardware Lab Partners.
+Бесплатно, по лицензии MIT, 523 урока. Спасибо спонсорам и сторонникам, благодаря которым эта работа возможна. [Посмотреть всех спонсоров и сторонников](../../BACKERS.md).
 
-**Reach:** 114,584 monthly visitors · 181,995 page views (Vercel Web Analytics verified
-2026-08-29) · 50,728 GitHub stars (verified 2026-08-29).
-
-### Current sponsors
-
-| Sponsor | What they support |
-|---|---|
-| [CodeRabbit](https://coderabbit.link/rohit-ghumare) · [iii](https://iii.dev?utm_source=ai-engineering-from-scratch&utm_medium=readme&utm_campaign=sponsor) | Current sponsors supporting curriculum maintenance and open-source development. |
-| [![Vercel OSS Program](https://vercel.com/oss/program-badge-2026.svg)](https://vercel.com/open-source-program) | Open-source infrastructure support through the Vercel Open Source Program. |
-
-| Tier | $/mo | What you get |
-|------|------|---|
-| Backer | $25 | Name in BACKERS.md |
-| Bronze | $250 | Text-only row in README sponsor block + launch-day tweet |
-| Silver | $750 | Small logo in README + listed as one supported provider in API lessons |
-| Gold | $2,000 | Medium logo in README + sponsor page + quarterly X / LinkedIn co-feature |
-| Platinum | $5,000 | Hero logo above the fold + one dedicated integration lesson, max 1 partner |
-| Diamond / Title Partner | $10,000 | Sole title-partner placement + hero logo + quarterly reporting and co-feature, max 1 partner |
-
-Hardware manufacturers can support the course through the separate
-[Hardware Lab Partner policy](../../SPONSORS.md#hardware-lab-partner). Equipment is in-kind
-support and does not automatically grant a cash sponsorship tier.
-
-Full rate card, hard rules, pricing anchors, and reach data: [SPONSORS.md](../../SPONSORS.md).
-Sign up via [GitHub Sponsors](https://github.com/sponsors/rohitg00).
+Хотите поддержать проект? Посмотрите [варианты спонсорства](../../SPONSORS.md), включая [спонсорство оборудования](../../SPONSORS.md#hardware-lab-partner), или [станьте спонсором на GitHub](https://github.com/sponsors/rohitg00).
 
 ```text
 ░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒

@@ -20,6 +20,11 @@ H_START_BUILD = "Start here: choose what you want to build"
 START_BUILD = "You do not need to scan 523 lessons before beginning. Pick one goal. Each link opens the same curriculum on GitHub or the website, and both versions use the same lesson code."
 NOT_SURE = "Not sure where you fit? Use the [`start-learning` placement tutor](skills/start-learning/SKILL.md) or the [website prerequisites guide](https://aiengineeringfromscratch.com/prereqs.html)."
 LEARNING_PATHS = "Compare four core domains and six career routes in the [AI Engineering Learning Paths](https://aiengineeringfromscratch.com/learning-paths.html)."
+H_SPONSORS = "Sponsors"
+SPONSOR_ALT = "SerpApi. Web Search API for your AI apps. Available in Markdown and JSON for any integration."
+SPONSOR_THANKS = "Thank you to our sponsors."
+SPONSOR_SUPPORT = "Your support keeps every lesson free and open source."
+SEE_SUPPORTERS = "See all supporters"
 H_USE_LESSON = "Use every lesson the same way"
 LESSON_COMMANDS = "Commands in lesson pages are paths from the repository root unless the lesson explicitly says to change directories. If a lesson offers several languages, run the implementation for the language you are learning."
 H_CLONE_EVIDENCE = "Clone it and produce your first evidence"
@@ -43,6 +48,8 @@ H_CONTRIB = "Contributing"
 H_SPONSOR = "Sponsor the work"
 H_STAR = "Star history"
 H_LICENSE = "License"
+SPONSOR_CLOSING = "Free, MIT-licensed, 523 lessons. Thank you to the sponsors and backers who make the work possible. [See all sponsors and backers](BACKERS.md)."
+SPONSOR_INVITE = "Want to support the work? See [sponsorship options](SPONSORS.md), including [hardware sponsorships](SPONSORS.md#hardware-lab-partner), or [sponsor on GitHub](https://github.com/sponsors/rohitg00)."
 
 README_NOTE = {
     "es": '<p align="center"><sub>Traducción de la comunidad. El <a href="../../README.md">inglés es la versión canónica</a> · <a href="https://aiengineeringfromscratch.com">aiengineeringfromscratch.com</a></sub></p>',
@@ -263,3 +270,117 @@ TRANSLATIONS = {
         H_SPONSOR: "Projeye sponsor olun", H_STAR: "Yıldız geçmişi", H_LICENSE: "Lisans",
     },
 }
+
+SPONSOR_TRANSLATIONS = {
+    "es": {
+        H_SPONSORS: "Patrocinadores",
+        SPONSOR_ALT: "SerpApi. API de búsqueda web para tus aplicaciones de IA. Disponible en Markdown y JSON para cualquier integración.",
+        SPONSOR_THANKS: "Gracias a nuestros patrocinadores.",
+        SPONSOR_SUPPORT: "Tu apoyo mantiene cada lección gratuita y de código abierto.",
+        SEE_SUPPORTERS: "Ver todos los colaboradores",
+        SPONSOR_CLOSING: "Gratis, con licencia MIT, 523 lecciones. Gracias a los patrocinadores y colaboradores que hacen posible este trabajo. [Ver todos los patrocinadores y colaboradores](BACKERS.md).",
+        SPONSOR_INVITE: "¿Quieres apoyar el proyecto? Consulta las [opciones de patrocinio](SPONSORS.md), incluidos los [patrocinios de hardware](SPONSORS.md#hardware-lab-partner), o [patrocina en GitHub](https://github.com/sponsors/rohitg00).",
+    },
+    "fr": {
+        H_SPONSORS: "Partenaires",
+        SPONSOR_ALT: "SerpApi. API de recherche Web pour vos applications d’IA. Disponible en Markdown et JSON pour toute intégration.",
+        SPONSOR_THANKS: "Merci à nos sponsors.",
+        SPONSOR_SUPPORT: "Votre soutien permet à chaque leçon de rester gratuite et open source.",
+        SEE_SUPPORTERS: "Voir tous les soutiens",
+        SPONSOR_CLOSING: "Gratuit, sous licence MIT, 523 leçons. Merci aux sponsors et aux soutiens qui rendent ce travail possible. [Voir tous les sponsors et soutiens](BACKERS.md).",
+        SPONSOR_INVITE: "Vous souhaitez soutenir le projet ? Consultez les [options de sponsoring](SPONSORS.md), notamment le [sponsoring matériel](SPONSORS.md#hardware-lab-partner), ou [soutenez le projet sur GitHub](https://github.com/sponsors/rohitg00).",
+    },
+    "pt": {
+        H_SPONSORS: "Patrocinadores",
+        SPONSOR_ALT: "SerpApi. API de busca na Web para seus aplicativos de IA. Disponível em Markdown e JSON para qualquer integração.",
+        SPONSOR_THANKS: "Agradecemos aos nossos patrocinadores.",
+        SPONSOR_SUPPORT: "Seu apoio mantém todas as lições gratuitas e de código aberto.",
+        SEE_SUPPORTERS: "Ver todos os apoiadores",
+        SPONSOR_CLOSING: "Grátis, com licença MIT, 523 lições. Agradecemos aos patrocinadores e apoiadores que tornam este trabalho possível. [Ver todos os patrocinadores e apoiadores](BACKERS.md).",
+        SPONSOR_INVITE: "Quer apoiar o projeto? Veja as [opções de patrocínio](SPONSORS.md), incluindo [patrocínios de hardware](SPONSORS.md#hardware-lab-partner), ou [patrocine pelo GitHub](https://github.com/sponsors/rohitg00).",
+    },
+    "de": {
+        H_SPONSORS: "Sponsoren",
+        SPONSOR_ALT: "SerpApi. Websuch-API für deine KI-Anwendungen. Für jede Integration in Markdown und JSON verfügbar.",
+        SPONSOR_THANKS: "Vielen Dank an unsere Sponsoren.",
+        SPONSOR_SUPPORT: "Deine Unterstützung hält jede Lektion kostenlos und quelloffen.",
+        SEE_SUPPORTERS: "Alle Unterstützer ansehen",
+        SPONSOR_CLOSING: "Kostenlos, MIT-lizenziert, 523 Lektionen. Vielen Dank an die Sponsoren und Unterstützer, die diese Arbeit ermöglichen. [Alle Sponsoren und Unterstützer ansehen](BACKERS.md).",
+        SPONSOR_INVITE: "Möchtest du die Arbeit unterstützen? Sieh dir die [Sponsoring-Optionen](SPONSORS.md) einschließlich [Hardware-Sponsoring](SPONSORS.md#hardware-lab-partner) an oder [unterstütze das Projekt auf GitHub](https://github.com/sponsors/rohitg00).",
+    },
+    "it": {
+        H_SPONSORS: "Sponsor",
+        SPONSOR_ALT: "SerpApi. API di ricerca Web per le tue applicazioni di IA. Disponibile in Markdown e JSON per qualsiasi integrazione.",
+        SPONSOR_THANKS: "Grazie ai nostri sponsor.",
+        SPONSOR_SUPPORT: "Il tuo sostegno mantiene ogni lezione gratuita e open source.",
+        SEE_SUPPORTERS: "Vedi tutti i sostenitori",
+        SPONSOR_CLOSING: "Gratuito, con licenza MIT, 523 lezioni. Grazie agli sponsor e ai sostenitori che rendono possibile questo lavoro. [Vedi tutti gli sponsor e i sostenitori](BACKERS.md).",
+        SPONSOR_INVITE: "Vuoi sostenere il progetto? Consulta le [opzioni di sponsorizzazione](SPONSORS.md), incluse le [sponsorizzazioni hardware](SPONSORS.md#hardware-lab-partner), oppure [sostienilo su GitHub](https://github.com/sponsors/rohitg00).",
+    },
+    "zh": {
+        H_SPONSORS: "赞助方",
+        SPONSOR_ALT: "SerpApi。面向 AI 应用的网页搜索 API，可为任何集成提供 Markdown 和 JSON 格式。",
+        SPONSOR_THANKS: "感谢我们的赞助方。",
+        SPONSOR_SUPPORT: "你的支持让每节课都能保持免费和开源。",
+        SEE_SUPPORTERS: "查看所有支持者",
+        SPONSOR_CLOSING: "免费、采用 MIT 许可证，共 523 节课。感谢所有让这项工作成为可能的赞助方和支持者。[查看所有赞助方和支持者](BACKERS.md)。",
+        SPONSOR_INVITE: "想支持这项工作？请查看[赞助方案](SPONSORS.md)，包括[硬件赞助](SPONSORS.md#hardware-lab-partner)，或[通过 GitHub 赞助](https://github.com/sponsors/rohitg00)。",
+    },
+    "ja": {
+        H_SPONSORS: "スポンサー",
+        SPONSOR_ALT: "SerpApi。AIアプリ向けのWeb検索API。あらゆる連携に使えるMarkdown形式とJSON形式に対応しています。",
+        SPONSOR_THANKS: "スポンサーの皆さまに感謝します。",
+        SPONSOR_SUPPORT: "皆さまの支援により、すべてのレッスンを無料かつオープンソースで提供できます。",
+        SEE_SUPPORTERS: "すべての支援者を見る",
+        SPONSOR_CLOSING: "無料、MITライセンス、523レッスン。この取り組みを支えるスポンサーと支援者の皆さまに感謝します。[すべてのスポンサーと支援者を見る](BACKERS.md)。",
+        SPONSOR_INVITE: "この取り組みを支援するには、[スポンサーシップの選択肢](SPONSORS.md)と[ハードウェアスポンサーシップ](SPONSORS.md#hardware-lab-partner)をご覧になるか、[GitHubでスポンサーになる](https://github.com/sponsors/rohitg00)ことができます。",
+    },
+    "ko": {
+        H_SPONSORS: "후원사",
+        SPONSOR_ALT: "SerpApi. AI 앱을 위한 웹 검색 API. 어떤 통합에도 사용할 수 있도록 Markdown과 JSON으로 제공합니다.",
+        SPONSOR_THANKS: "후원사 여러분께 감사드립니다.",
+        SPONSOR_SUPPORT: "여러분의 후원으로 모든 레슨을 무료 오픈소스로 유지할 수 있습니다.",
+        SEE_SUPPORTERS: "모든 후원자 보기",
+        SPONSOR_CLOSING: "무료, MIT 라이선스, 523개 레슨. 이 작업을 가능하게 해 주는 후원사와 후원자 여러분께 감사드립니다. [모든 후원사와 후원자 보기](BACKERS.md).",
+        SPONSOR_INVITE: "이 작업을 지원하려면 [후원 옵션](SPONSORS.md)과 [하드웨어 후원](SPONSORS.md#hardware-lab-partner)을 확인하거나 [GitHub에서 후원](https://github.com/sponsors/rohitg00)하세요.",
+    },
+    "hi": {
+        H_SPONSORS: "प्रायोजक",
+        SPONSOR_ALT: "SerpApi। आपके AI ऐप्स के लिए वेब खोज API। किसी भी एकीकरण के लिए Markdown और JSON में उपलब्ध।",
+        SPONSOR_THANKS: "हमारे प्रायोजकों का धन्यवाद।",
+        SPONSOR_SUPPORT: "आपका सहयोग हर पाठ को मुफ़्त और ओपन सोर्स बनाए रखता है।",
+        SEE_SUPPORTERS: "सभी समर्थक देखें",
+        SPONSOR_CLOSING: "मुफ़्त, MIT लाइसेंस के अंतर्गत, 523 पाठ। इस काम को संभव बनाने वाले प्रायोजकों और समर्थकों का धन्यवाद। [सभी प्रायोजक और समर्थक देखें](BACKERS.md)।",
+        SPONSOR_INVITE: "इस काम में सहयोग करना चाहते हैं? [प्रायोजन विकल्प](SPONSORS.md), जिनमें [हार्डवेयर प्रायोजन](SPONSORS.md#hardware-lab-partner) शामिल है, देखें या [GitHub पर प्रायोजित करें](https://github.com/sponsors/rohitg00)।",
+    },
+    "ar": {
+        H_SPONSORS: "الرعاة",
+        SPONSOR_ALT: "SerpApi. واجهة API للبحث على الويب لتطبيقات الذكاء الاصطناعي، متاحة بصيغتي Markdown وJSON لأي تكامل.",
+        SPONSOR_THANKS: "شكرًا لرعاتنا.",
+        SPONSOR_SUPPORT: "دعمكم يُبقي كل درس مجانيًا ومفتوح المصدر.",
+        SEE_SUPPORTERS: "عرض جميع الداعمين",
+        SPONSOR_CLOSING: "مجاني، بترخيص MIT، ويضم 523 درسًا. شكرًا للرعاة والداعمين الذين يجعلون هذا العمل ممكنًا. [عرض جميع الرعاة والداعمين](BACKERS.md).",
+        SPONSOR_INVITE: "هل ترغب في دعم العمل؟ اطّلع على [خيارات الرعاية](SPONSORS.md)، بما فيها [رعاية الأجهزة](SPONSORS.md#hardware-lab-partner)، أو [قدّم رعايتك عبر GitHub](https://github.com/sponsors/rohitg00).",
+    },
+    "ru": {
+        H_SPONSORS: "Спонсоры",
+        SPONSOR_ALT: "SerpApi. API веб-поиска для ваших приложений с ИИ. Доступен в форматах Markdown и JSON для любой интеграции.",
+        SPONSOR_THANKS: "Спасибо нашим спонсорам.",
+        SPONSOR_SUPPORT: "Ваша поддержка помогает сохранять все уроки бесплатными и открытыми.",
+        SEE_SUPPORTERS: "Посмотреть всех сторонников",
+        SPONSOR_CLOSING: "Бесплатно, по лицензии MIT, 523 урока. Спасибо спонсорам и сторонникам, благодаря которым эта работа возможна. [Посмотреть всех спонсоров и сторонников](BACKERS.md).",
+        SPONSOR_INVITE: "Хотите поддержать проект? Посмотрите [варианты спонсорства](SPONSORS.md), включая [спонсорство оборудования](SPONSORS.md#hardware-lab-partner), или [станьте спонсором на GitHub](https://github.com/sponsors/rohitg00).",
+    },
+    "tr": {
+        H_SPONSORS: "Sponsorlar",
+        SPONSOR_ALT: "SerpApi. Yapay zeka uygulamalarınız için Web Arama API'si. Her türlü entegrasyon için Markdown ve JSON biçimlerinde sunulur.",
+        SPONSOR_THANKS: "Sponsorlarımıza teşekkür ederiz.",
+        SPONSOR_SUPPORT: "Desteğiniz her dersin ücretsiz ve açık kaynak kalmasını sağlar.",
+        SEE_SUPPORTERS: "Tüm destekçileri görüntüle",
+        SPONSOR_CLOSING: "Ücretsiz, MIT lisanslı, 523 ders. Bu çalışmayı mümkün kılan sponsorlara ve destekçilere teşekkür ederiz. [Tüm sponsorları ve destekçileri görüntüle](BACKERS.md).",
+        SPONSOR_INVITE: "Çalışmayı desteklemek ister misiniz? [Sponsorluk seçeneklerini](SPONSORS.md), [donanım sponsorluğunu](SPONSORS.md#hardware-lab-partner) inceleyin veya [GitHub üzerinden sponsor olun](https://github.com/sponsors/rohitg00).",
+    },
+}
+
+for language, sponsor_translations in SPONSOR_TRANSLATIONS.items():
+    TRANSLATIONS[language].update(sponsor_translations)

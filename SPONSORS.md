@@ -10,7 +10,16 @@ to the issue queue. Production hardware is considered separately under the
 
 If you or your company want to support the curriculum, this page is the rate card.
 
+## Sponsor
+
+| Sponsor | Description |
+|---|---|
+| <a href="https://serpapi.com/ai-engineering-from-scratch"><picture><source media="(prefers-color-scheme: dark)" srcset="https://serpapi.com/assets/media_kit/logo-with-wordmark-white.svg"><img src="https://serpapi.com/assets/media_kit/logo-with-wordmark.svg" alt="SerpApi" width="180"></picture></a> | Web Search API for your AI apps. Available in Markdown and JSON for any integration. |
+
 ## How to sponsor
+
+Sponsor names, logos, links, and tier assignments are managed by the maintainer.
+Sponsorship changes are not accepted through contributor pull requests.
 
 - **GitHub Sponsors:** [github.com/sponsors/rohitg00](https://github.com/sponsors/rohitg00)
 

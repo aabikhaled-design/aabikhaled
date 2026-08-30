@@ -67,6 +67,20 @@ or the [website prerequisites guide](https://aiengineeringfromscratch.com/prereq
 
 Compare four core domains and six career routes in the [AI Engineering Learning Paths](https://aiengineeringfromscratch.com/learning-paths.html).
 
+### 후원사
+
+<a href="https://serpapi.com/ai-engineering-from-scratch">
+  <img align="left" src="../../assets/sponsors/serpapi-banner.png" alt="SerpApi. AI 앱을 위한 웹 검색 API. 어떤 통합에도 사용할 수 있도록 Markdown과 JSON으로 제공합니다." width="600">
+</a>
+
+<p><br><b>후원사 여러분께 감사드립니다.</b></p>
+<p>여러분의 후원으로 모든 레슨을 무료 오픈소스로 유지할 수 있습니다.</p>
+<p>
+  <a href="#supporters">모든 후원자 보기</a><br>
+  <a href="../../SPONSORS.md">Become a sponsor</a>
+  <br clear="all">
+</p>
+
 ### Use every lesson the same way
 
 1. **Read** `docs/en.md` and explain the core idea in your own words.
@@ -1360,36 +1374,13 @@ relative links inside lesson docs.
 ░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒
 ```
 
+<a id="supporters"></a>
+
 ## 프로젝트 후원하기
 
-Free, MIT-licensed, 523 lessons. The curriculum is maintained through cash sponsorships
-and approved Hardware Lab Partners.
+무료, MIT 라이선스, 523개 레슨. 이 작업을 가능하게 해 주는 후원사와 후원자 여러분께 감사드립니다. [모든 후원사와 후원자 보기](../../BACKERS.md).
 
-**Reach:** 114,584 monthly visitors · 181,995 page views (Vercel Web Analytics verified
-2026-08-29) · 50,728 GitHub stars (verified 2026-08-29).
-
-### Current sponsors
-
-| Sponsor | What they support |
-|---|---|
-| [CodeRabbit](https://coderabbit.link/rohit-ghumare) · [iii](https://iii.dev?utm_source=ai-engineering-from-scratch&utm_medium=readme&utm_campaign=sponsor) | Current sponsors supporting curriculum maintenance and open-source development. |
-| [![Vercel OSS Program](https://vercel.com/oss/program-badge-2026.svg)](https://vercel.com/open-source-program) | Open-source infrastructure support through the Vercel Open Source Program. |
-
-| Tier | $/mo | What you get |
-|------|------|---|
-| Backer | $25 | Name in BACKERS.md |
-| Bronze | $250 | Text-only row in README sponsor block + launch-day tweet |
-| Silver | $750 | Small logo in README + listed as one supported provider in API lessons |
-| Gold | $2,000 | Medium logo in README + sponsor page + quarterly X / LinkedIn co-feature |
-| Platinum | $5,000 | Hero logo above the fold + one dedicated integration lesson, max 1 partner |
-| Diamond / Title Partner | $10,000 | Sole title-partner placement + hero logo + quarterly reporting and co-feature, max 1 partner |
-
-Hardware manufacturers can support the course through the separate
-[Hardware Lab Partner policy](../../SPONSORS.md#hardware-lab-partner). Equipment is in-kind
-support and does not automatically grant a cash sponsorship tier.
-
-Full rate card, hard rules, pricing anchors, and reach data: [SPONSORS.md](../../SPONSORS.md).
-Sign up via [GitHub Sponsors](https://github.com/sponsors/rohitg00).
+이 작업을 지원하려면 [후원 옵션](../../SPONSORS.md)과 [하드웨어 후원](../../SPONSORS.md#hardware-lab-partner)을 확인하거나 [GitHub에서 후원](https://github.com/sponsors/rohitg00)하세요.
 
 ```text
 ░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒

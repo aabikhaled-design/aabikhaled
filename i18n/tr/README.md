@@ -67,6 +67,20 @@ or the [website prerequisites guide](https://aiengineeringfromscratch.com/prereq
 
 Compare four core domains and six career routes in the [AI Engineering Learning Paths](https://aiengineeringfromscratch.com/learning-paths.html).
 
+### Sponsorlar
+
+<a href="https://serpapi.com/ai-engineering-from-scratch">
+  <img align="left" src="../../assets/sponsors/serpapi-banner.png" alt="SerpApi. Yapay zeka uygulamalarınız için Web Arama API'si. Her türlü entegrasyon için Markdown ve JSON biçimlerinde sunulur." width="600">
+</a>
+
+<p><br><b>Sponsorlarımıza teşekkür ederiz.</b></p>
+<p>Desteğiniz her dersin ücretsiz ve açık kaynak kalmasını sağlar.</p>
+<p>
+  <a href="#supporters">Tüm destekçileri görüntüle</a><br>
+  <a href="../../SPONSORS.md">Become a sponsor</a>
+  <br clear="all">
+</p>
+
 ### Use every lesson the same way
 
 1. **Read** `docs/en.md` and explain the core idea in your own words.
@@ -1360,36 +1374,13 @@ relative links inside lesson docs.
 ░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒
 ```
 
+<a id="supporters"></a>
+
 ## Projeye sponsor olun
 
-Free, MIT-licensed, 523 lessons. The curriculum is maintained through cash sponsorships
-and approved Hardware Lab Partners.
+Ücretsiz, MIT lisanslı, 523 ders. Bu çalışmayı mümkün kılan sponsorlara ve destekçilere teşekkür ederiz. [Tüm sponsorları ve destekçileri görüntüle](../../BACKERS.md).
 
-**Reach:** 114,584 monthly visitors · 181,995 page views (Vercel Web Analytics verified
-2026-08-29) · 50,728 GitHub stars (verified 2026-08-29).
-
-### Current sponsors
-
-| Sponsor | What they support |
-|---|---|
-| [CodeRabbit](https://coderabbit.link/rohit-ghumare) · [iii](https://iii.dev?utm_source=ai-engineering-from-scratch&utm_medium=readme&utm_campaign=sponsor) | Current sponsors supporting curriculum maintenance and open-source development. |
-| [![Vercel OSS Program](https://vercel.com/oss/program-badge-2026.svg)](https://vercel.com/open-source-program) | Open-source infrastructure support through the Vercel Open Source Program. |
-
-| Tier | $/mo | What you get |
-|------|------|---|
-| Backer | $25 | Name in BACKERS.md |
-| Bronze | $250 | Text-only row in README sponsor block + launch-day tweet |
-| Silver | $750 | Small logo in README + listed as one supported provider in API lessons |
-| Gold | $2,000 | Medium logo in README + sponsor page + quarterly X / LinkedIn co-feature |
-| Platinum | $5,000 | Hero logo above the fold + one dedicated integration lesson, max 1 partner |
-| Diamond / Title Partner | $10,000 | Sole title-partner placement + hero logo + quarterly reporting and co-feature, max 1 partner |
-
-Hardware manufacturers can support the course through the separate
-[Hardware Lab Partner policy](../../SPONSORS.md#hardware-lab-partner). Equipment is in-kind
-support and does not automatically grant a cash sponsorship tier.
-
-Full rate card, hard rules, pricing anchors, and reach data: [SPONSORS.md](../../SPONSORS.md).
-Sign up via [GitHub Sponsors](https://github.com/sponsors/rohitg00).
+Çalışmayı desteklemek ister misiniz? [Sponsorluk seçeneklerini](../../SPONSORS.md), [donanım sponsorluğunu](../../SPONSORS.md#hardware-lab-partner) inceleyin veya [GitHub üzerinden sponsor olun](https://github.com/sponsors/rohitg00).
 
 ```text
 ░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒

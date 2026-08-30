@@ -60,6 +60,13 @@ test('homepage nodes open the expanded learning paths domains', () => {
   }
 });
 
+test('homepage actions switch to two columns when the masthead column narrows', () => {
+  assert.match(
+    homepage,
+    /@media \(min-width: 761px\) and \(max-width: 1023px\),\s*\(min-width: 1280px\) \{[\s\S]*?\.masthead-cta\s*\{(?=[^}]*grid-template-columns: repeat\(2, minmax\(0, 1fr\)\);)(?=[^}]*height: auto;)[^}]*\}/
+  );
+});
+
 test('every core learning path exposes clickable child competencies', () => {
   let totalChildren = 0;
   for (const domain of domains) {
