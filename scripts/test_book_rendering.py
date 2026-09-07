@@ -34,6 +34,15 @@ Further reading: (http://neuralnetworksanddeeplearning.com/). Keep the URL click
 | TTS Arena | English TTS | `huggingface.co/spaces/TTS-AGI/TTS-Arena` |
 | Escaping | Literal symbols | `{value}#100%_ok` |
 | Unicode | Literal multiplication | `k × sr / N` |
+
+| Mistake | Why it is bad | Fix |
+| --- | --- | --- |
+| Fitting on full data before splitting | Data leakage | Use Pipeline with cross_val_score |
+| Feature engineering outside the pipeline | Different transforms at train vs serve | Put all transforms in the Pipeline |
+| Not handling unknown categories | Production crash on new values | OneHotEncoder(handle_unknown="ignore") |
+| Hardcoded column names | Breaks when features change | Use column lists from config |
+| No data validation | Silently wrong predictions | Add schema checks before prediction |
+| Training/serving skew | Model sees different features in prod | One Pipeline object for both |
 """
 
 
@@ -108,6 +117,7 @@ class BookRenderingTest(unittest.TestCase):
                        "open_asr_leaderboard", "TTS-Arena", "{value}#100%_ok", "k×sr/N",
                        'paddleocr.PaddleOCR(lang="en").ocr(image_path)', "protocolVersion"):
             self.assertIn(marker, text)
+        self.assertIn("OneHotEncoder(handle_unknown=", text)
 
 
 if __name__ == "__main__":
