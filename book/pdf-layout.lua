@@ -12,15 +12,15 @@ function Table(block)
   end
   return block:walk({
     Str = function(inline)
-      if #inline.text <= 20 or not inline.text:find("[/_=(]") then
+      if #inline.text <= 20 or inline.text:find("[^ -~]") then
         return nil
       end
       local wrapped = pandoc.List()
-      for _, codepoint in utf8.codes(inline.text) do
+      for character in inline.text:gmatch(".") do
         if #wrapped > 0 then
           wrapped:insert(pandoc.RawInline("latex", "\\allowbreak{}"))
         end
-        wrapped:insert(pandoc.Str(utf8.char(codepoint)))
+        wrapped:insert(pandoc.Str(character))
       end
       return wrapped
     end,

@@ -43,13 +43,14 @@ Further reading: (http://neuralnetworksanddeeplearning.com/). Keep the URL click
 | Hardcoded column names | Breaks when features change | Use column lists from config |
 | No data validation | Silently wrong predictions | Add schema checks before prediction |
 | Training/serving skew | Model sees different features in prod | One Pipeline object for both |
+| A long plain identifier | Must remain readable in a narrow table cell | Abcdefghijklmnopqrstuvwxyz0123456789Abcdefghijklmnopqrstuvwxyz0123456789 |
 """
 
 
-def render(source, output="html"):
+def render(source, output="html", lua_filter=FILTER):
     return subprocess.run(
         ["pandoc", "--from", "markdown+fenced_divs", "--to", output,
-         "--lua-filter", str(FILTER)],
+         "--lua-filter", str(lua_filter)],
         input=source, text=True, capture_output=True, check=True,
     ).stdout
 
@@ -77,6 +78,21 @@ class BookRenderingTest(unittest.TestCase):
             self.assertIn(token, result)
         self.assertEqual(result.count(r"\textless"), 3)
         self.assertEqual(result.count(r"\textgreater"), 3)
+
+    def test_table_breaks_only_long_ascii_tokens(self):
+        layout = ROOT / "book" / "pdf-layout.lua"
+        for token in ("Abcdefghijklmnopqrstuvwxyz0123456789", "package.module.LongIdentifier123"):
+            with self.subTest(token=token):
+                source = f"| Value |\n| --- |\n| {token} |\n"
+                result = render(source, "latex", layout)
+                self.assertIn(r"\allowbreak{}", result)
+                self.assertIn(token, result.replace(r"\allowbreak{}", ""))
+                self.assertEqual(render(source, "html", layout), render(source, "html"))
+        for token in ("short/path", "prefix_" + "e\u0301" * 12,
+                      "prefix_" + "👩\u200d💻" * 4, "prefix_" + "x\ufe0f" * 12):
+            with self.subTest(token=token):
+                source = f"| Value |\n| --- |\n| {token} |\n"
+                self.assertEqual(render(source, "latex", layout), render(source, "latex"))
 
     def test_requested_pdf_failure_fails_the_build(self):
         with tempfile.TemporaryDirectory() as directory:
@@ -118,6 +134,7 @@ class BookRenderingTest(unittest.TestCase):
                        'paddleocr.PaddleOCR(lang="en").ocr(image_path)', "protocolVersion"):
             self.assertIn(marker, text)
         self.assertIn("OneHotEncoder(handle_unknown=", text)
+        self.assertIn("Abcdefghijklmnopqrstuvwxyz0123456789" * 2, text)
 
 
 if __name__ == "__main__":
