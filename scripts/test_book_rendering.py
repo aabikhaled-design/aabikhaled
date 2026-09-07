@@ -25,6 +25,9 @@ This plain-text code block must also wrap its long lines without losing the fina
 
 Further reading: (http://neuralnetworksanddeeplearning.com/). Keep the URL clickable.
 
+- PaddleOCR is mature, fast, and multilingual. One-line usage: `paddleocr.PaddleOCR(lang="en").ocr(image_path)`.
+- A long MCP identifier: `params._meta.io.modelcontextprotocol/protocolVersion`.
+
 | Leaderboard | Tracks | URL |
 | --- | --- | --- |
 | Open ASR Leaderboard | English and multilingual | `huggingface.co/spaces/hf-audio/open_asr_leaderboard` |
@@ -102,7 +105,8 @@ class BookRenderingTest(unittest.TestCase):
                 self.assertLessEqual(float(word.attrib["xMax"]), right + 1, word.text)
         text = "".join(word.text or "" for word in root.findall(".//x:word", ns))
         for marker in ("embeddings.", "PLAIN_TEXT_END.", "neuralnetworksanddeeplearning.com",
-                       "open_asr_leaderboard", "TTS-Arena", "{value}#100%_ok", "k×sr/N"):
+                       "open_asr_leaderboard", "TTS-Arena", "{value}#100%_ok", "k×sr/N",
+                       'paddleocr.PaddleOCR(lang="en").ocr(image_path)', "protocolVersion"):
             self.assertIn(marker, text)
 
 
