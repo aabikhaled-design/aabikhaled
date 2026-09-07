@@ -4,7 +4,7 @@ function Table(block)
   end
   return block:walk({
     Code = function(inline)
-      local escaped = inline.text:gsub("([%p ])", "\\%1")
+      local escaped = inline.text:gsub("([\\%%#{}%^ &$~_])", "\\%1")
       return pandoc.RawInline("latex", "\\EscVerb{" .. escaped .. "}")
     end,
   })

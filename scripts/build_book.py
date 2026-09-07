@@ -399,11 +399,8 @@ def render(vol, md, chapters, pdf=False):
             cjk = pick_font(cjk_candidates[BOOK_LANG])
             if cjk:
                 cmd_pdf += ["-V", f"CJKmainfont={cjk}"]
-        try:
-            subprocess.run(cmd_pdf, check=True, cwd=ROOT)
-            results.append(pdf_out)
-        except subprocess.CalledProcessError:
-            print(f"warning: PDF render failed for {vol['slug']} (non-fatal)", file=sys.stderr)
+        subprocess.run(cmd_pdf, check=True, cwd=ROOT)
+        results.append(pdf_out)
     return results
 
 

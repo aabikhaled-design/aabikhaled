@@ -4,6 +4,9 @@ import tempfile
 import unittest
 import xml.etree.ElementTree as ET
 from pathlib import Path
+from unittest.mock import patch
+
+import build_book
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -27,6 +30,7 @@ Further reading: (http://neuralnetworksanddeeplearning.com/). Keep the URL click
 | Open ASR Leaderboard | English and multilingual | `huggingface.co/spaces/hf-audio/open_asr_leaderboard` |
 | TTS Arena | English TTS | `huggingface.co/spaces/TTS-AGI/TTS-Arena` |
 | Escaping | Literal symbols | `{value}#100%_ok` |
+| Unicode | Literal multiplication | `k × sr / N` |
 """
 
 
@@ -62,6 +66,18 @@ class BookRenderingTest(unittest.TestCase):
         self.assertEqual(result.count(r"\textless"), 3)
         self.assertEqual(result.count(r"\textgreater"), 3)
 
+    def test_requested_pdf_failure_fails_the_build(self):
+        with tempfile.TemporaryDirectory() as directory:
+            with patch.multiple(build_book, BUILD=Path(directory), DIST=Path(directory)), \
+                 patch.object(build_book, "git_date", return_value="2026-09-07"), \
+                 patch.object(build_book, "git_edition", return_value="2026.09"), \
+                 patch.object(build_book, "pick_font", return_value=None), \
+                 patch.object(build_book.subprocess, "run", side_effect=[
+                     None, subprocess.CalledProcessError(43, "pandoc"),
+                 ]):
+                with self.assertRaises(subprocess.CalledProcessError):
+                    build_book.render(build_book.CONFIG["volumes"][0], Path("fixture.md"), 1, pdf=True)
+
     @unittest.skipUnless(shutil.which("xelatex") and shutil.which("pdftotext"),
                          "PDF layout check requires xelatex and pdftotext")
     def test_pdf_long_code_and_urls_stay_inside_margins(self):
@@ -86,7 +102,7 @@ class BookRenderingTest(unittest.TestCase):
                 self.assertLessEqual(float(word.attrib["xMax"]), right + 1, word.text)
         text = "".join(word.text or "" for word in root.findall(".//x:word", ns))
         for marker in ("embeddings.", "PLAIN_TEXT_END.", "neuralnetworksanddeeplearning.com",
-                       "open_asr_leaderboard", "TTS-Arena", "{value}#100%_ok"):
+                       "open_asr_leaderboard", "TTS-Arena", "{value}#100%_ok", "k×sr/N"):
             self.assertIn(marker, text)
 
 
