@@ -364,6 +364,7 @@ def render(vol, md, chapters, pdf=False):
             "-o", str(pdf_out),
             "--from", "markdown+fenced_divs+autolink_bare_uris",
             "--lua-filter", str(ROOT / "book" / "literal-tokens.lua"),
+            "--lua-filter", str(ROOT / "book" / "pdf-layout.lua"),
             "--toc", "--toc-depth=1",
             "--top-level-division=chapter",
             "--pdf-engine=xelatex",

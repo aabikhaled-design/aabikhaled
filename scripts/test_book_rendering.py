@@ -21,6 +21,12 @@ This plain-text code block must also wrap its long lines without losing the fina
 ```
 
 Further reading: (http://neuralnetworksanddeeplearning.com/). Keep the URL clickable.
+
+| Leaderboard | Tracks | URL |
+| --- | --- | --- |
+| Open ASR Leaderboard | English and multilingual | `huggingface.co/spaces/hf-audio/open_asr_leaderboard` |
+| TTS Arena | English TTS | `huggingface.co/spaces/TTS-AGI/TTS-Arena` |
+| Escaping | Literal symbols | `{value}#100%_ok` |
 """
 
 
@@ -63,6 +69,7 @@ class BookRenderingTest(unittest.TestCase):
             pdf = Path(directory) / "wrapping.pdf"
             result = subprocess.run(
                 ["pandoc", "--from", PDF_SOURCE_FORMAT, "--pdf-engine=xelatex",
+                 "--lua-filter", str(ROOT / "book" / "pdf-layout.lua"),
                  "--include-in-header", str(ROOT / "book" / "theme.tex"),
                  "-V", "documentclass=book", "-V", "geometry=margin=1in",
                  "-o", str(pdf)],
@@ -78,7 +85,8 @@ class BookRenderingTest(unittest.TestCase):
                 self.assertGreaterEqual(float(word.attrib["xMin"]), 71, word.text)
                 self.assertLessEqual(float(word.attrib["xMax"]), right + 1, word.text)
         text = "".join(word.text or "" for word in root.findall(".//x:word", ns))
-        for marker in ("embeddings.", "PLAIN_TEXT_END.", "neuralnetworksanddeeplearning.com"):
+        for marker in ("embeddings.", "PLAIN_TEXT_END.", "neuralnetworksanddeeplearning.com",
+                       "open_asr_leaderboard", "TTS-Arena", "{value}#100%_ok"):
             self.assertIn(marker, text)
 
 
