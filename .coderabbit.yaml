@@ -4,3 +4,7 @@ reviews:
   changelog: false
   release_notes: false
   collapse_walkthrough: true
+  path_filters:
+    - "!**/notebook/*.ipynb"
+    - "!**/*.ipynb"
+
