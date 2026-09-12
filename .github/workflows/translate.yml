@@ -57,14 +57,17 @@ jobs:
           REQUESTED_PHASE: ${{ github.event.inputs.phase }}
         run: |
           # every emitted code must exist in the registry; requested codes are
-          # intersected with it, so untrusted input can never reach matrix.lang
+          # intersected with it, so untrusted input can never reach matrix.lang.
+          # lessons == "human" languages are hand-authored on main, so they are
+          # dropped from both sets: a machine pass would publish a competing
+          # translation of a lesson someone already wrote by hand.
           if [ -n "$REQUESTED" ]; then
             JSON=$(jq -c --arg req "$REQUESTED" \
               '($req | split(" ") | map(select(length > 0))) as $want
-               | [.languages[].code] as $known
+               | [.languages[] | select(.lessons != "human") | .code] as $known
                | [$want[] | select(. as $c | $known | index($c))]' languages.json)
           else
-            JSON=$(jq -c '[.languages[] | select(.ci == true) | .code]' languages.json)
+            JSON=$(jq -c '[.languages[] | select(.ci == true and .lessons != "human") | .code]' languages.json)
           fi
           echo "langs=$JSON" >> "$GITHUB_OUTPUT"
           # Manual runs can select one phase for a cheap end-to-end smoke test.

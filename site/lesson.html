@@ -2522,6 +2522,7 @@
   <script src="build-meta.js"></script>
   <script src="langs.js?v=20260802a"></script>
   <script src="lang-picker.js?v=20260808d"></script>
+  <script src="i18n.js?v=20260912a"></script>
   <script src="data.js?v=20260821c"></script>
   <script>
     (function () {
@@ -3333,20 +3334,20 @@
             var pp = PHASES[prevPhaseIdx];
             var ppSlug = extractPhaseSlug(pp, prevPhaseIdx);
             var ppFirstLesson = pp.lessons[0] ? extractLessonSlug(pp.lessons[0], 0) : '';
-            html += '<a href="lesson?path=phases/' + ppSlug + '/' + ppFirstLesson + '">&larr; Phase ' + String(pp.id).padStart(2, '0') + ': ' + escapeHtml(pp.name) + '</a>';
+            html += '<a href="lesson?path=phases/' + ppSlug + '/' + ppFirstLesson + '">&larr; ' + i18nT('phase', 'Phase') + ' ' + String(pp.id).padStart(2, '0') + ': ' + escapeHtml(i18nPick(pp, 'name')) + '</a>';
           }
           if (nextPhaseIdx >= 0) {
             var np = PHASES[nextPhaseIdx];
             var npSlug = extractPhaseSlug(np, nextPhaseIdx);
             var npFirstLesson = np.lessons[0] ? extractLessonSlug(np.lessons[0], 0) : '';
-            html += '<a href="lesson?path=phases/' + npSlug + '/' + npFirstLesson + '">Phase ' + String(np.id).padStart(2, '0') + ': ' + escapeHtml(np.name) + ' &rarr;</a>';
+            html += '<a href="lesson?path=phases/' + npSlug + '/' + npFirstLesson + '">' + i18nT('phase', 'Phase') + ' ' + String(np.id).padStart(2, '0') + ': ' + escapeHtml(i18nPick(np, 'name')) + ' &rarr;</a>';
           }
           html += '</div>';
         }
 
         if (currentPhaseIndex >= 0) {
           var phase = PHASES[currentPhaseIndex];
-          html += '<div class="sidebar-phase-header">Phase ' + String(phase.id).padStart(2, '0') + ' · ' + escapeHtml(phase.name) + '</div>';
+          html += '<div class="sidebar-phase-header">' + i18nT('phase', 'Phase') + ' ' + String(phase.id).padStart(2, '0') + ' · ' + escapeHtml(i18nPick(phase, 'name')) + '</div>';
           for (var k = 0; k < phase.lessons.length; k++) {
             var les = phase.lessons[k];
             var lesSlug = extractLessonSlug(les, k);
@@ -3360,7 +3361,7 @@
               html += '<span class="sidebar-lesson-link disabled">';
             }
             html += '<span class="sidebar-lesson-dot ' + lessonProgressClass(lesPath, lesReadable) + '"></span>';
-            html += escapeHtml(les.name);
+            html += escapeHtml(i18nPick(les, 'name'));
             html += lesReadable ? '</a>' : '</span>';
           }
         }
@@ -3426,6 +3427,20 @@
         return window.AIFS_currentLang ? window.AIFS_currentLang() : 'en';
       }
 
+      // Translated field picker and UI label lookup, backed by site/i18n.js.
+      // Both fall back to English when that layer is absent or has no entry.
+      function i18nPick(obj, field) {
+        if (window.AIFSi18n && window.AIFSi18n.pick) return window.AIFSi18n.pick(obj, field);
+        return (obj && obj[field] != null) ? obj[field] : '';
+      }
+      function i18nT(key, fallback) {
+        if (window.AIFSi18n && window.AIFSi18n.t) {
+          var value = window.AIFSi18n.t(key);
+          if (value !== key) return value;
+        }
+        return fallback;
+      }
+
       function applyRenderedLanguage(lang) {
         var actual = lang || 'en';
         if (window.AIFS_applyLangDir) {
@@ -3434,6 +3449,19 @@
         }
         document.documentElement.lang = actual;
         document.documentElement.dir = /^(ar|he|fa|ur)$/i.test(actual) ? 'rtl' : 'ltr';
+      }
+
+      // languages.json marks a language `lessons: "human"` when its lesson
+      // markdown is written by hand and committed next to the English source.
+      // build.js copies that flag into langs.js, so the page never hardcodes a
+      // language code here.
+      function isHumanAuthoredLang(lang) {
+        var registry = window.AIFS_LANGS;
+        if (!lang || lang === 'en' || !Array.isArray(registry)) return false;
+        for (var i = 0; i < registry.length; i += 1) {
+          if (registry[i] && registry[i].code === lang) return registry[i].lessons === 'human';
+        }
+        return false;
       }
 
       function fetchRepositoryFile(relativePath) {
@@ -3485,6 +3513,11 @@
         var lang = currentLang();
         var translatedUrl = 'https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/translations/i18n/'
           + lang + '/' + path + '/docs/' + lang + '.md';
+        // A language registered with lessons: "human" keeps hand-authored
+        // markdown on this branch at <lesson>/docs/<code>.md. That copy is the
+        // better one, so it is read first and the machine translation on the
+        // translations branch stays a fallback for lessons it does not cover.
+        var humanTranslatedPath = isHumanAuthoredLang(lang) ? path + '/docs/' + lang + '.md' : '';
 
         if (!retried || !lessonQuizPromise) {
           lessonQuizPromise = fetchRepositoryFile(path + '/quiz.json')
@@ -3493,18 +3526,28 @@
         }
         var quizPromiseForRequest = lessonQuizPromise;
 
-        var lessonDocument = lang === 'en'
-          ? fetchRepositoryFile(enPath).then(function (response) {
-              return { response: response, lang: 'en' };
-            })
-          : fetch(translatedUrl).then(function (response) {
-              if (!response.ok) throw new Error('fetch-failed');
-              return { response: response, lang: lang };
-            }).catch(function () {
-              return fetchRepositoryFile(enPath).then(function (response) {
-                return { response: response, lang: 'en' };
-              });
-            });
+        function fetchUpstreamTranslation() {
+          return fetch(translatedUrl).then(function (response) {
+            if (!response.ok) throw new Error('fetch-failed');
+            return { response: response, lang: lang };
+          });
+        }
+        function fetchEnglish() {
+          return fetchRepositoryFile(enPath).then(function (response) {
+            return { response: response, lang: 'en' };
+          });
+        }
+
+        var lessonDocument;
+        if (lang === 'en') {
+          lessonDocument = fetchEnglish();
+        } else if (humanTranslatedPath) {
+          lessonDocument = fetchRepositoryFile(humanTranslatedPath).then(function (response) {
+            return { response: response, lang: lang };
+          }).catch(fetchUpstreamTranslation).catch(fetchEnglish);
+        } else {
+          lessonDocument = fetchUpstreamTranslation().catch(fetchEnglish);
+        }
 
         lessonDocument
           .then(function (documentResult) {
@@ -5806,7 +5849,7 @@
         }
 
         var html = '<div class="ai-panel-header"><div class="ai-panel-icon">P</div><div class="ai-panel-title">Learning Path</div></div>';
-        html += '<div class="path-panel-context"><div class="ai-panel-subtitle">Phase ' + String(phase.id).padStart(2, '0') + ': ' + escapeHtml(phase.name) + '</div><span class="path-position">Lesson ' + (currentIdxInPhase + 1) + ' of ' + lessonsInPhase.length + '</span></div>';
+        html += '<div class="path-panel-context"><div class="ai-panel-subtitle">' + i18nT('phase', 'Phase') + ' ' + String(phase.id).padStart(2, '0') + ': ' + escapeHtml(i18nPick(phase, 'name')) + '</div><span class="path-position">Lesson ' + (currentIdxInPhase + 1) + ' of ' + lessonsInPhase.length + '</span></div>';
 
         // Keep the route readable in the available column: one before, current, one after.
         var windowSize = 3;

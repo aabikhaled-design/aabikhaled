@@ -87,6 +87,26 @@ docs/
 
 Keep the same structure as the English version. Translate content, not code.
 
+A translation committed here is hand-authored, which is a different track from
+the machine pass that publishes to the `translations` branch. Register the
+language in `languages.json` with `"lessons": "human"` so the machine pass never
+publishes a competing version of the same lesson, and the site offers the
+language in its switcher. Then keep the file line-for-line with English:
+
+```bash
+python3 scripts/check_translation_sync.py --lang <code>
+```
+
+That check runs in CI. It compares structure only — line count, fenced code,
+tables, headings, list markers, and figure blocks — never wording, so a
+translated sentence can read however it reads best. Its job is to catch the case
+where an English lesson is edited and the translation is silently left behind.
+
+A language can also translate the site chrome: phase names in
+`i18n/<code>/phases.json`, glossary prose in `glossary/terms.<code>.md`, and UI
+labels in `site/i18n.js`. Each one falls back to English when absent, so partial
+coverage is fine. See [docs/i18n.md](docs/i18n.md).
+
 ### 3. Add an Output
 
 If a lesson should produce a reusable prompt, skill, agent, or MCP server:

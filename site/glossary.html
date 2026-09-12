@@ -808,7 +808,7 @@
 </head>
 <body>
 
-  <a href="#main" class="skip-link">Skip to content</a>
+  <a href="#main" class="skip-link" data-i18n="prereqs.skip">Skip to content</a>
 
   <header class="site-header">
     <div class="header-inner">
@@ -816,10 +816,10 @@
         <span class="logo-icon" aria-hidden="true"></span> AI / FROM SCRATCH
       </a>
       <nav class="header-nav">
-        <a href="index.html#contents">Contents</a>
-        <a href="catalog.html">Catalog</a>
-        <a href="prereqs.html">Roadmap</a>
-        <a href="glossary.html">Glossary</a>
+        <a href="index.html#contents" data-i18n="nav.contents">Contents</a>
+        <a href="catalog.html" data-i18n="nav.catalog">Catalog</a>
+        <a href="prereqs.html" data-i18n="nav.roadmap">Roadmap</a>
+        <a href="glossary.html" data-i18n="nav.glossary">Glossary</a>
         <a href="about.html">About</a>
         <a href="https://github.com/rohitg00/ai-engineering-from-scratch" target="_blank" rel="noopener" class="header-github">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.4 3-.405 1.02.005 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
@@ -836,6 +836,7 @@
           <line x1="21" y1="21" x2="16.65" y2="16.65"/>
         </svg>
       </button>
+      <div id="langPicker"></div>
       <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme" type="button">
         <span class="theme-icon" id="themeIcon">N</span>
       </button>
@@ -846,15 +847,15 @@
     <div class="container">
       <header class="glossary-masthead">
         <div>
-          <p class="glossary-kicker">Reference ledger · curriculum v1.0</p>
-          <h1>AI Engineering Glossary</h1>
-          <p class="glossary-deck">Precise working definitions for the systems you build. Start with the meaning, then use the examples, distinctions, and lesson links to turn vocabulary into judgment.</p>
+          <p class="glossary-kicker" data-i18n="glossary.kicker">Reference ledger · curriculum v1.0</p>
+          <h1 data-i18n="glossary.title">AI Engineering Glossary</h1>
+          <p class="glossary-deck" data-i18n="glossary.deck1">Precise working definitions for the systems you build. Start with the meaning, then use the examples, distinctions, and lesson links to turn vocabulary into judgment.</p>
           <p class="glossary-deck">Each entry separates a term's working definition from why it matters in an AI system, how it appears in practice, and what engineers commonly confuse it with. Search by term, alias, or idea; narrow the ledger by learning area; then follow the linked course lesson or primary source when you need the full derivation. Every entry has a stable fragment link, so you can cite one definition directly without sending someone through the entire index.</p>
         </div>
         <div class="glossary-stats" aria-label="Glossary statistics">
           <div class="glossary-stat">
             <strong id="glossaryStatTerms">0</strong>
-            <span class="glossary-stat-label">Terms indexed</span>
+            <span class="glossary-stat-label" data-i18n="glossary.stat.terms">Terms indexed</span>
           </div>
           <div class="glossary-stat">
             <strong id="glossaryStatCategories">0</strong>
@@ -915,16 +916,19 @@
 
   <footer class="site-footer">
     <div class="container footer-inner">
-      <p>AI Engineering from Scratch · open source · free forever.</p>
+      <p data-i18n="footer.tagline">AI Engineering from Scratch · open source · free forever.</p>
       <div class="footer-links">
-        <a href="index.html">Home</a>
+        <a href="index.html" data-i18n="footer.home">Home</a>
         <a href="https://github.com/rohitg00/ai-engineering-from-scratch" target="_blank" rel="noopener">GitHub</a>
-        <a href="catalog.html">Catalog</a>
-              <a href="https://github.com/rohitg00/ai-engineering-from-scratch/issues/new/choose" target="_blank" rel="noopener">Report / Suggest</a>
+        <a href="catalog.html" data-i18n="nav.catalog">Catalog</a>
+              <a href="https://github.com/rohitg00/ai-engineering-from-scratch/issues/new/choose" target="_blank" rel="noopener" data-i18n="footer.report">Report / Suggest</a>
       </div>
     </div>
   </footer>
 
+  <script src="langs.js?v=20260802a"></script>
+  <script src="lang-picker.js?v=20260808d"></script>
+  <script src="i18n.js?v=20260912a"></script>
   <script src="data.js?v=20260821c"></script>
   <script src="progress.js?v=20260822a"></script>
   <script src="header.js?v=20260829b" defer></script>
@@ -1057,6 +1061,12 @@
             example: text(item.example),
             confusion: text(item.confusion),
             whyCalled: text(item.whyCalled),
+            saysKo: text(item.saysKo),
+            meansKo: text(item.meansKo),
+            whyItMattersKo: text(item.whyItMattersKo),
+            exampleKo: text(item.exampleKo),
+            confusionKo: text(item.confusionKo),
+            whyCalledKo: text(item.whyCalledKo),
             aliases: textList(item.aliases),
             related: Array.isArray(item.related) ? item.related : textList(item.related),
             lessons: objectList(item.lessons),
@@ -1110,6 +1120,11 @@
             entry.whyItMatters,
             entry.example,
             entry.confusion,
+            entry.meansKo,
+            entry.saysKo,
+            entry.whyItMattersKo,
+            entry.exampleKo,
+            entry.confusionKo,
             entry.whyCalled,
             entry.aliases.join(' '),
             relatedText,
@@ -1250,17 +1265,32 @@
           };
         }
 
+        // Translated prose when the reader chose a language that has one;
+        // English otherwise. The term, category, aliases, related terms, lesson
+        // links, and sources stay English because they are identifiers.
+        function gPick(entry, field) {
+          if (window.AIFSi18n && window.AIFSi18n.pick) return window.AIFSi18n.pick(entry, field);
+          return entry[field] || '';
+        }
+        function gLabel(key, fallback) {
+          if (window.AIFSi18n && window.AIFSi18n.t) {
+            var value = window.AIFSi18n.t(key);
+            if (value !== key) return value;
+          }
+          return fallback;
+        }
+
         function entryHtml(entry) {
           var referenceNumber = String(entry.sourceIndex + 1).padStart(3, '0');
           var details = '';
           if (entry.confusion) {
-            details += '<div><span class="glossary-entry-label">Do not confuse it with</span><p>' + escapeHtml(entry.confusion) + '</p></div>';
+            details += '<div><span class="glossary-entry-label">' + escapeHtml(gLabel('glossary.label.confusion', 'Do not confuse it with')) + '</span><p>' + escapeHtml(gPick(entry, 'confusion')) + '</p></div>';
           }
           if (entry.whyCalled) {
-            details += '<div><span class="glossary-entry-label">Why it is called this</span><p>' + escapeHtml(entry.whyCalled) + '</p></div>';
+            details += '<div><span class="glossary-entry-label">' + escapeHtml(gLabel('glossary.label.whyCalled', 'Why it is called this')) + '</span><p>' + escapeHtml(gPick(entry, 'whyCalled')) + '</p></div>';
           }
-          details += resourceHtml('Learn it in the course', entry.lessons, false);
-          details += resourceHtml('Primary sources', entry.sources, true);
+          details += resourceHtml(gLabel('glossary.label.lessons', 'Learn it in the course'), entry.lessons, false);
+          details += resourceHtml(gLabel('glossary.label.sources', 'Primary sources'), entry.sources, true);
 
           var relatedItems = '';
           entry.related.forEach(function (related) {
@@ -1277,19 +1307,19 @@
           html += '<button class="glossary-copy-link" type="button" data-copy-slug="' + escapeHtml(entry.slug) + '" aria-label="Copy link to ' + escapeHtml(entry.term) + '">Copy link</button></div></div>';
           html += '<h4 class="glossary-term-heading" id="' + escapeHtml(entry.slug) + '-title" dir="auto">' + escapeHtml(entry.term) + '</h4>';
           if (entry.aliases.length) {
-            html += '<p class="glossary-aliases">Also called · ' + escapeHtml(entry.aliases.join(' · ')) + '</p>';
+            html += '<p class="glossary-aliases">' + escapeHtml(gLabel('glossary.label.aliases', 'Also called')) + ' · ' + escapeHtml(entry.aliases.join(' · ')) + '</p>';
           }
-          html += '<div class="glossary-meaning"><span class="glossary-entry-label">Working definition</span><p>' + escapeHtml(entry.means || 'Definition in progress.') + '</p></div>';
+          html += '<div class="glossary-meaning"><span class="glossary-entry-label">' + escapeHtml(gLabel('glossary.label.definition', 'Working definition')) + '</span><p>' + escapeHtml(gPick(entry, 'means') || gLabel('glossary.label.pending', 'Definition in progress.')) + '</p></div>';
 
           var teaching = '';
           if (entry.whyItMatters) {
-            teaching += '<div class="glossary-teaching-block"><span class="glossary-entry-label">Why it matters</span><p>' + escapeHtml(entry.whyItMatters) + '</p></div>';
+            teaching += '<div class="glossary-teaching-block"><span class="glossary-entry-label">' + escapeHtml(gLabel('glossary.label.whyItMatters', 'Why it matters')) + '</span><p>' + escapeHtml(gPick(entry, 'whyItMatters')) + '</p></div>';
           }
           if (entry.example) {
-            teaching += '<div class="glossary-teaching-block"><span class="glossary-entry-label">In practice</span><p>' + escapeHtml(entry.example) + '</p></div>';
+            teaching += '<div class="glossary-teaching-block"><span class="glossary-entry-label">' + escapeHtml(gLabel('glossary.label.example', 'In practice')) + '</span><p>' + escapeHtml(gPick(entry, 'example')) + '</p></div>';
           }
           if (entry.says) {
-            teaching += '<div class="glossary-teaching-block glossary-shortcut"><span class="glossary-entry-label">Common shortcut</span><p>“' + escapeHtml(entry.says) + '”</p></div>';
+            teaching += '<div class="glossary-teaching-block glossary-shortcut"><span class="glossary-entry-label">' + escapeHtml(gLabel('glossary.label.says', 'Common shortcut')) + '</span><p>“' + escapeHtml(gPick(entry, 'says')) + '”</p></div>';
           }
           if (teaching) html += '<div class="glossary-teaching-grid">' + teaching + '</div>';
 
@@ -1309,6 +1339,10 @@
             announceEl.textContent = message;
           }, 180);
         }
+
+        window.addEventListener('aifs:langchange', function () {
+          if (typeof renderGlossary === 'function') renderGlossary();
+        });
 
         function renderGlossary() {
           if (!glossaryAvailable) {

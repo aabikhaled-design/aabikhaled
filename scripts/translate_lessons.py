@@ -53,6 +53,11 @@ def _load_registry():
 _REG = _load_registry()
 LANG_NAMES = {entry["code"]: entry["name"] for entry in _REG if not entry.get("source")}
 NLLB_CODES = {entry["code"]: entry.get("nllb") for entry in _REG}
+# Languages whose lesson markdown is hand-authored on main at
+# phases/<lesson>/docs/<code>.md. A machine pass would publish a second, worse
+# Korean for the same lesson on the translations branch, so those languages are
+# refused here rather than silently producing a competing translation.
+HUMAN_LESSON_LANGS = {entry["code"] for entry in _REG if entry.get("lessons") == "human"}
 
 # Inline span vocabulary, named once so the two protection lists compose from the
 # same regexes instead of copy-pasting them.
@@ -281,6 +286,14 @@ def main():
     ap.add_argument("--only", help="limit to one lesson path (phases/.../lesson)")
     ap.add_argument("--dry-run", action="store_true")
     args = ap.parse_args()
+
+    if args.lang in HUMAN_LESSON_LANGS:
+        raise SystemExit(
+            f"{args.lang}: lesson markdown is hand-authored on main "
+            f"(phases/<lesson>/docs/{args.lang}.md); refusing to machine-translate it. "
+            "Edit those files directly, or drop the \"lessons\": \"human\" flag from "
+            "languages.json first."
+        )
 
     cpath = cache_path(args.lang, args.phase)
     cache = {}

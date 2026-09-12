@@ -28,7 +28,7 @@
   <a href="https://aiengineeringfromscratch.com"><img src="https://img.shields.io/badge/web-aiengineeringfromscratch.com-3553ff?style=flat-square&labelColor=fafaf5" alt="Website"></a>
 </p>
 
-## From the creator of [Agent Memory - #1 Persistent memory ⭐](https://github.com/rohitg00/agentmemory) <a href="https://github.com/rohitg00/agentmemory/stargazers"><img src="https://img.shields.io/github/stars/rohitg00/agentmemory?style=flat-square&labelColor=fafaf5&color=3553ff" alt="GitHub stars"></a> which naturally works with any agents or chat assistants.
+## [Agent Memory - 지속 메모리 1위 ⭐](https://github.com/rohitg00/agentmemory) <a href="https://github.com/rohitg00/agentmemory/stargazers"><img src="https://img.shields.io/github/stars/rohitg00/agentmemory?style=flat-square&labelColor=fafaf5&color=3553ff" alt="GitHub stars"></a> 를 만든 사람이 이 커리큘럼도 만들었습니다. Agent Memory는 어떤 에이전트나 챗 어시스턴트와도 그대로 연동됩니다.
 
 ```text
 ░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒
@@ -44,11 +44,9 @@
 <p align="center"><sub><b>114,584</b> readers &nbsp;·&nbsp; <b>181,995</b> page views in the last 30 days &nbsp;·&nbsp; as of 2026-08-29</sub></p>
 <!-- STATS:END -->
 
-## Start here: choose what you want to build
+## 여기에서 시작하십시오. 무엇을 만들지 먼저 고르십시오
 
-You do not need to scan 523 lessons before beginning. Pick one goal. Each link
-opens the same curriculum on GitHub or the website, and both versions use the
-same lesson code.
+시작하기 전에 523개 레슨을 전부 훑어볼 필요는 없습니다. 목표를 하나만 고르십시오. 아래의 각 링크는 GitHub이나 웹사이트에서 동일한 커리큘럼을 열어 주며, 두 판본은 같은 레슨 코드를 사용합니다.
 
 | Your goal | Learn on GitHub | Learn on the website |
 |---|---|---|
@@ -62,10 +60,9 @@ same lesson code.
 | I want to write and ship Agent Skills | [Focused Agent Skills route](../../phases/13-tools-and-protocols/README.md#agent-skills-fast-path) | [Agent Skills path](https://aiengineeringfromscratch.com/lesson?path=phases/13-tools-and-protocols/22-skills-and-agent-sdks&learningPath=agent-skills) |
 | I want to prepare for a Claude certification | [Certification onboarding](../../certifications/claude/GETTING_STARTED.md) | [Certification Academy](https://aiengineeringfromscratch.com/certifications.html) |
 
-Not sure where you fit? Use the [`start-learning` placement tutor](../../skills/start-learning/SKILL.md)
-or the [website prerequisites guide](https://aiengineeringfromscratch.com/prereqs.html).
+자신이 어디에서 시작해야 할지 판단하기 어렵다면, [`start-learning` 배치 진단 튜터](../../skills/start-learning/SKILL.md)를 사용하거나 [웹사이트의 선행 조건 안내](https://aiengineeringfromscratch.com/prereqs.html)를 참고하십시오.
 
-Compare four core domains and six career routes in the [AI Engineering Learning Paths](https://aiengineeringfromscratch.com/learning-paths.html).
+네 개의 핵심 분야와 여섯 개의 커리어 경로를 [AI Engineering 학습 경로](https://aiengineeringfromscratch.com/learning-paths.html)에서 비교해 보십시오.
 
 ### 후원사
 
@@ -81,7 +78,7 @@ Compare four core domains and six career routes in the [AI Engineering Learning 
   <br clear="all">
 </p>
 
-### Use every lesson the same way
+### 모든 레슨은 같은 방식으로 사용합니다
 
 1. **Read** `docs/en.md` and explain the core idea in your own words.
 2. **Type and build** the important code instead of treating the code block as decoration.
@@ -89,11 +86,9 @@ Compare four core domains and six career routes in the [AI Engineering Learning 
 4. **Keep evidence**: the command, working directory, exit code, meaningful output, and the artifact you changed or produced.
 5. **Continue** only when you can explain the output and make one small change without guessing.
 
-Commands in lesson pages are paths from the repository root unless the lesson
-explicitly says to change directories. If a lesson offers several languages,
-run the implementation for the language you are learning.
+레슨 문서에 나오는 명령은, 레슨이 디렉터리를 옮기라고 명시하지 않는 한 저장소 최상위 디렉터리를 기준으로 삼은 경로입니다. 한 레슨이 여러 언어로 구현을 제공한다면, 여러분이 학습하고 있는 언어의 구현을 실행하십시오.
 
-### Clone it and produce your first evidence
+### 저장소를 클론해서 첫 번째 결과를 직접 만들어 보십시오
 
 ```bash
 git clone https://github.com/rohitg00/ai-engineering-from-scratch.git
@@ -102,21 +97,13 @@ python3 phases/00-setup-and-tooling/01-dev-environment/code/verify.py --route be
 python3 phases/01-math-foundations/01-linear-algebra-intuition/code/vectors.py
 ```
 
-The preflight separates requirements needed now from tools needed later. Every
-required failure includes the detected reason and a corrective command. The
-second command is a dependency-free lesson and ends by showing that a matrix
-times a vector is the operation inside a neural network layer. Save that
-terminal output as your first evidence.
+사전 점검 스크립트는 지금 당장 필요한 요구 사항과 나중에 필요한 도구를 구분해서 알려 줍니다. 필수 항목이 하나라도 실패하면, 실패를 일으킨 원인과 그것을 바로잡는 명령을 함께 출력합니다. 두 번째 명령은 외부 의존성이 전혀 없는 레슨을 실행하며, 행렬과 벡터의 곱이 곧 신경망 레이어 내부에서 일어나는 연산이라는 사실을 보여 주면서 끝납니다. 그 터미널 출력을 첫 번째 학습 결과로 저장해 두십시오.
 
-## Add the AI tutor in 30 seconds
+## AI 튜터를 30초 만에 추가하기
 
-If Node.js, `npx`, and a skill-capable coding agent are already installed,
-your coding agent can become your tutor in two commands. A repository clone is
-not needed to install or read the tutor. Runnable focused-path labs need
-`python3`. Agent Skills host labs also need a selected host and a writable
-user or project skill scope.
+Node.js와 `npx`, 그리고 스킬을 지원하는 코딩 에이전트가 이미 설치되어 있다면, 명령 두 줄만으로 그 코딩 에이전트를 학습 튜터로 바꿀 수 있습니다. 튜터를 설치하거나 읽는 데에는 저장소를 클론할 필요가 없습니다. 실행 가능한 집중 경로 실습에는 `python3`이 필요합니다. Agent Skills 호스트 실습에는 호스트를 하나 선택해야 하고, 쓰기가 가능한 사용자 스킬 범위나 프로젝트 스킬 범위도 있어야 합니다.
 
-Check the local requirements first:
+먼저 로컬 환경이 요구 사항을 충족하는지 확인하십시오.
 
 ```bash
 node --version
@@ -124,14 +111,13 @@ npx --version
 python3 --version
 ```
 
-Then install the curriculum skills and choose the host and scope you intend to
-use when the installer asks:
+그다음 커리큘럼 스킬을 설치하고, 설치 프로그램이 물어볼 때 사용하려는 호스트와 범위를 선택하십시오.
 
 ```bash
 npx skills add rohitg00/ai-engineering-from-scratch
 ```
 
-Invocation syntax belongs to the host, not to the portable `SKILL.md` format:
+스킬을 호출하는 문법은 이식 가능한 `SKILL.md` 형식이 아니라 각 호스트가 정합니다.
 
 | Host | Start the course | Start Model Context Protocol (MCP) | Start Agent Skills | Run a phase quiz |
 |---|---|---|---|---|
@@ -139,48 +125,21 @@ Invocation syntax belongs to the host, not to the portable `SKILL.md` format:
 | Claude Code | `/start-learning` | `/learn-mcp` | `/learn-agent-skills` | `/check-understanding 13` |
 | Other compatible hosts | `Use start-learning to begin the course.` | `Use learn-mcp to start the Model Context Protocol (MCP) path.` | `Use learn-agent-skills to start the Agent Skills Engineering path.` | `Use check-understanding to quiz me on Phase 13.` |
 
-A ten-question placement quiz maps what you already know to a starting phase and
-saves a personalized study plan to `LEARNING.md`. From there, the `learn` skill
-teaches one lesson per session: concept, math, code, quiz. It streams lessons
-straight from this repo, and the `course-guide` skill jumps you to the exact
-lesson that covers anything you are stuck on. In Codex, invoke these skills with
-`learn` and `course-guide`; in Claude Code, use `/learn` and `/course-guide`;
-in other compatible hosts, ask to use the skill by name.
+열 문항짜리 배치 진단 퀴즈가 여러분이 이미 알고 있는 내용을 파악해서 시작할 페이즈를 정해 주고, 개인별 학습 계획을 `LEARNING.md`에 저장합니다. 그다음부터는 `learn` 스킬이 한 세션에 한 레슨씩 가르칩니다. 개념을 설명하고, 수학을 유도하고, 코드를 작성하고, 퀴즈를 냅니다. 이 스킬은 레슨을 이 저장소에서 바로 가져오며, 막히는 내용이 생기면 `course-guide` 스킬이 그 내용을 다루는 레슨으로 곧바로 데려다줍니다. Codex에서는 `learn`과 `course-guide`라고 입력해서 호출하고, Claude Code에서는 `/learn`과 `/course-guide`를 사용하며, 다른 호환 호스트에서는 스킬 이름을 말해서 사용을 요청하십시오.
 
-Only want Model Context Protocol (MCP)? Use the MCP invocation for your host. It creates
-`MCP-LEARNING.md` and follows one 17-lesson route through stateless
-requests, transports, bidirectional work, security, reliability, registry
-governance, and conformance evidence. The exact order and checkpoints live in
-the [Model Context Protocol (MCP) manifest](../../learning-paths/model-context-protocol.json).
+Model Context Protocol(MCP)만 배우고 싶다면, 사용하는 호스트에 맞는 MCP 호출 방법을 쓰십시오. 그러면 `MCP-LEARNING.md` 파일이 만들어지고, 17개 레슨으로 이루어진 하나의 경로를 따라가게 됩니다. 이 경로는 상태를 유지하지 않는 요청에서 출발해 전송 계층, 양방향 통신, 보안, 신뢰성, 레지스트리 거버넌스, 적합성 증거까지 이어집니다. 정확한 순서와 점검 지점은 [Model Context Protocol(MCP) 매니페스트](../../learning-paths/model-context-protocol.json)에 적혀 있습니다.
 
-Only want Agent Skills? Use the Agent Skills invocation for your host. It
-creates `AGENT-SKILLS-LEARNING.md` and follows one coherent five-lesson route:
-contract, discovery, invocation, sandbox boundaries, then release evals and
-real-host portability. Start on the web with the
-[Agent Skills path](https://aiengineeringfromscratch.com/lesson?path=phases/13-tools-and-protocols/22-skills-and-agent-sdks&learningPath=agent-skills).
+Agent Skills만 배우고 싶다면, 사용하는 호스트에 맞는 Agent Skills 호출 방법을 쓰십시오. 그러면 `AGENT-SKILLS-LEARNING.md` 파일이 만들어지고, 서로 이어지는 다섯 개 레슨을 차례로 학습하게 됩니다. 스킬 패키지의 계약을 정의하고, 스킬을 발견하게 만들고, 실제로 호출하고, 샌드박스 경계를 정하고, 마지막으로 배포 전 평가와 실제 호스트 사이의 이식성을 다룹니다. 웹에서는 [Agent Skills 경로](https://aiengineeringfromscratch.com/lesson?path=phases/13-tools-and-protocols/22-skills-and-agent-sdks&learningPath=agent-skills)에서 시작할 수 있습니다.
 
-The installer lists the hosts it can configure and asks where to install. If
-you do not have Node.js, `npx`, `python3`, a supported host, or a writable
-scope yet, use the website or read `docs/en.md` manually. That path teaches the
-concepts, but real-host discovery, invocation, script, and uninstall evidence
-remains pending until the preflight is available. Read the lessons at
-[aiengineeringfromscratch.com](https://aiengineeringfromscratch.com).
+설치 프로그램은 설정할 수 있는 호스트 목록을 보여 주고 어디에 설치할지 묻습니다. Node.js나 `npx`, `python3`, 지원되는 호스트, 쓰기 가능한 범위 가운데 아직 갖추지 못한 것이 있다면, 웹사이트를 이용하거나 `docs/en.md`를 직접 읽으십시오. 그렇게 해도 개념은 배울 수 있지만, 실제 호스트에서 스킬이 발견되고 호출되고 스크립트가 실행되고 제거되는 과정을 증거로 남기는 일은 사전 점검을 통과한 뒤로 미뤄집니다. 레슨은 [aiengineeringfromscratch.com](https://aiengineeringfromscratch.com)에서 읽을 수 있습니다.
 
 ## 동작 방식
 
-Most AI material teaches in scattered pieces. A paper here, a fine-tuning post there, a
-flashy agent demo somewhere else. The pieces rarely line up. You ship a chatbot but can't
-explain its loss curve. You hook a function to an agent but can't say what attention does
-inside the model that's calling it.
+AI를 다루는 자료는 대부분 흩어진 조각으로 가르칩니다. 여기에는 논문이 하나 있고, 저기에는 파인튜닝을 설명하는 글이 하나 있으며, 또 다른 곳에는 화려한 에이전트 데모가 하나 있습니다. 그 조각들은 서로 좀처럼 맞물리지 않습니다. 그래서 챗봇을 출시하고도 그 손실 곡선이 왜 그렇게 움직이는지 설명하지 못합니다. 에이전트에 함수를 연결해 놓고도, 그 함수를 호출하는 모델 내부에서 어텐션이 무슨 일을 하는지 말하지 못합니다.
 
-This curriculum is the spine. 20 phases, 523 lessons, four languages: Python, TypeScript,
-Rust, Julia. Linear algebra at one end, autonomous swarms at the other. Every algorithm
-gets built from raw math first. Backprop. Tokenizer. Attention. Agent loop. By the time
-PyTorch shows up, you already know what it's doing under the hood.
+이 커리큘럼은 그 조각들을 하나로 잇는 중심 구조입니다. 20개 페이즈, 523개 레슨, 그리고 Python, TypeScript, Rust, Julia까지 네 가지 언어를 사용합니다. 한쪽 끝에는 선형대수가 있고, 반대쪽 끝에는 자율 군집이 있습니다. 모든 알고리즘은 날것의 수학에서부터 먼저 구현합니다. 역전파를 구현하고, 토크나이저를 구현하고, 어텐션을 구현하고, 에이전트 루프를 구현합니다. PyTorch가 등장할 무렵이면, 여러분은 이미 PyTorch가 내부에서 무엇을 수행하는지 알고 있게 됩니다.
 
-Each lesson runs the same loop: read the problem, derive the math, write the code, run
-the test, keep the artifact. No five-minute videos, no copy-paste deploys, no hand-holding.
-Free, open source, and built to run on your own laptop.
+모든 레슨은 동일한 절차를 따릅니다. 문제를 읽고, 수학을 유도하고, 코드를 작성하고, 테스트를 실행하고, 그 결과물을 보관합니다. 5분짜리 영상도 없고, 복사해서 붙여넣는 배포도 없으며, 하나하나 떠먹여 주는 안내도 없습니다. 이 커리큘럼은 무료이고 오픈 소스이며, 여러분의 노트북에서 그대로 실행되도록 만들었습니다.
 
 ```text
 ░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒
@@ -188,9 +147,7 @@ Free, open source, and built to run on your own laptop.
 
 ## 커리큘럼의 구조
 
-Twenty phases stack on top of each other. Math is the floor. Agents and production are the roof.
-Skip ahead if you already know the lower layers, but don't skip and then wonder why something at
-the top is breaking.
+20개 페이즈는 아래에서 위로 차곡차곡 쌓여 있습니다. 가장 아래층은 수학이고, 가장 위층은 에이전트와 프로덕션 운영입니다. 아래층을 이미 알고 있다면 건너뛰어도 됩니다. 다만 건너뛴 다음에 위층에서 무언가 깨졌을 때 그 원인을 의아해하는 일은 없어야 합니다.
 
 ```mermaid
 %%{init: {'theme':'base','themeVariables':{'primaryColor':'#fafaf5','primaryTextColor':'#1a1a1a','primaryBorderColor':'#3553ff','lineColor':'#3553ff','fontFamily':'JetBrains Mono','fontSize':'12px'}}}%%
@@ -224,7 +181,7 @@ flowchart TB
 
 ## 레슨의 구조
 
-Each lesson lives in its own folder, with the same structure across the entire curriculum:
+모든 레슨은 각자의 폴더에 들어 있으며, 커리큘럼 전체가 동일한 구조를 따릅니다.
 
 ```text
 phases/<NN>-<phase-name>/<NN>-<lesson-name>/
@@ -234,9 +191,7 @@ phases/<NN>-<phase-name>/<NN>-<lesson-name>/
 └── outputs/   prompts, skills, agents, or MCP servers this lesson produces
 ```
 
-Every lesson follows six beats. The *Build It / Use It* split is the spine — you implement the
-algorithm from scratch first, then run the same thing through the production library. You
-understand what the framework is doing because you wrote the smaller version yourself.
+모든 레슨은 여섯 단계로 진행됩니다. 그중 *Build It / Use It* 구분이 핵심입니다. 먼저 알고리즘을 맨바닥에서 직접 구현하고, 그다음에 똑같은 동작을 실제 프로덕션 라이브러리로 실행해 봅니다. 작은 판본을 직접 작성해 봤기 때문에, 프레임워크가 무슨 일을 하는지 이해하게 됩니다.
 
 ```mermaid
 %%{init: {'theme':'base','themeVariables':{'primaryColor':'#fafaf5','primaryTextColor':'#1a1a1a','primaryBorderColor':'#3553ff','lineColor':'#3553ff','fontFamily':'JetBrains Mono','fontSize':'13px'}}}%%
@@ -252,27 +207,17 @@ flowchart LR
 
 시작하는 방법은 세 가지. 하나를 고르세요.
 
-**Option A — learn in your terminal *(recommended)*.** After the Node.js,
-`npx`, host, and scope preflight above, install the learning skills into a
-compatible agent and let the course drive itself:
+**선택지 A: 터미널에서 학습하기 *(권장)*.** 위에서 설명한 Node.js와 `npx`, 호스트, 설치 범위 사전 점검을 마쳤다면, 학습 스킬을 호환되는 에이전트에 설치하고 커리큘럼이 스스로 진행되도록 맡기십시오.
 
 ```bash
 npx skills add rohitg00/ai-engineering-from-scratch
 ```
 
-Use the host-specific invocation table above. The installed skills provide
-`start-learning`, `learn`, `course-guide`, and the focused
-`learn-mcp` and `learn-agent-skills` routes. Lesson prose can
-stream from this repository without a clone. A local clone is required for
-copied repository code commands and executable MCP or Agent Skills labs.
-Progress lives in `LEARNING.md`, `MCP-LEARNING.md`, or
-`AGENT-SKILLS-LEARNING.md` in your project, so every session can resume.
+위에 있는 호스트별 호출 방법 표를 참고하십시오. 설치된 스킬은 `start-learning`, `learn`, `course-guide`와 함께 집중 경로인 `learn-mcp`, `learn-agent-skills`를 제공합니다. 레슨 본문은 저장소를 클론하지 않아도 이 저장소에서 바로 받아 올 수 있습니다. 다만 저장소의 코드를 그대로 복사해 실행하는 명령과, MCP나 Agent Skills의 실행형 실습에는 로컬 클론이 필요합니다. 진행 상황은 프로젝트 안의 `LEARNING.md`나 `MCP-LEARNING.md`, `AGENT-SKILLS-LEARNING.md`에 저장되므로, 다음 세션에서 그대로 이어서 학습할 수 있습니다.
 
-**Option B — read.** Open any completed lesson on
-[aiengineeringfromscratch.com](https://aiengineeringfromscratch.com) or expand a phase under
-[Contents](#contents). No setup, no cloning.
+**선택지 B: 읽기.** 완성된 레슨은 [aiengineeringfromscratch.com](https://aiengineeringfromscratch.com)에서 아무거나 열어 보거나, [목차](#contents)에서 원하는 페이즈를 펼쳐 보십시오. 설치할 것도 없고 클론할 것도 없습니다.
 
-**Option C — clone and run.**
+**선택지 C: 클론해서 직접 실행하기.**
 
 ```bash
 git clone https://github.com/rohitg00/ai-engineering-from-scratch.git
@@ -280,35 +225,22 @@ cd ai-engineering-from-scratch
 python3 phases/01-math-foundations/01-linear-algebra-intuition/code/vectors.py
 ```
 
-Cloning also auto-loads the learning skills in Claude Code, and gives every
-lesson's code to the `learn` tutor for real execution instead of read-along.
+저장소를 클론하면 Claude Code에서 학습 스킬이 자동으로 로드되고, `learn` 튜터가 모든 레슨의 코드를 직접 실행할 수 있게 됩니다. 눈으로 따라 읽기만 하는 것과는 다릅니다.
 
 ### 사전 요구 사항
 
 - You can write code (any language; Python helps).
 - You want to understand how AI **actually works**, not just call APIs.
 
-### Prepare for Claude certifications
+### Claude 자격 시험 준비하기
 
-The [Claude Certification Academy](../../certifications/claude/README.md) is a free,
-open-source preparation program for all four official Claude certification tracks:
-Associate Foundations, Developer Foundations, Architect Foundations, and Architect
-Professional. Each route combines blueprint-mapped lessons, runnable labs, a
-diagnostic, capstone work, and a full-length original practice exam.
+[Claude Certification Academy](../../certifications/claude/README.md)는 공식 Claude 자격 과정 네 가지를 모두 준비할 수 있는 무료 오픈 소스 프로그램입니다. 네 과정은 Associate Foundations, Developer Foundations, Architect Foundations, Architect Professional입니다. 각 경로는 시험 출제 범위에 대응시킨 레슨, 실행 가능한 실습, 진단 평가, 캡스톤 과제, 그리고 자체 제작한 전체 분량 모의고사로 구성되어 있습니다.
 
-Use the [AI-native GitHub onboarding guide](../../certifications/claude/GETTING_STARTED.md)
-with Claude Code, Codex, ChatGPT, Cursor, or another agent. Run
-`claude-certification` in Codex, `/claude-certification` in Claude Code, or ask
-another host to use `claude-certification`. It chooses a track, creates a
-persistent route in `CLAUDE-CERTIFICATION.md`, teaches one step at a time, runs
-the real labs, and gives artifact-based feedback. The same curriculum remains
-available on the [certification website](https://aiengineeringfromscratch.com/certifications.html).
+[AI 환경에 맞춘 GitHub 온보딩 안내](../../certifications/claude/GETTING_STARTED.md)를 Claude Code, Codex, ChatGPT, Cursor를 비롯한 에이전트와 함께 사용하십시오. Codex에서는 `claude-certification`을 입력하고, Claude Code에서는 `/claude-certification`을 입력하며, 다른 호스트에서는 `claude-certification`을 사용해 달라고 요청하면 됩니다. 그러면 준비할 과정을 고르고, `CLAUDE-CERTIFICATION.md`에 학습 경로를 저장한 뒤, 한 단계씩 가르치고, 실제 실습을 실행하고, 여러분이 만든 결과물을 근거로 피드백을 줍니다. 같은 커리큘럼을 [자격 과정 웹사이트](https://aiengineeringfromscratch.com/certifications.html)에서도 볼 수 있습니다.
 
-The academy is independent study material based on public exam objectives. It is not
-affiliated with Anthropic, does not reproduce live exam questions, and cannot guarantee
-a passing score.
+이 학습 과정은 공개된 시험 목표를 근거로 만든 독립적인 학습 자료입니다. Anthropic과는 아무 관계가 없고, 실제 시험 문제를 그대로 싣지 않으며, 합격을 보장하지도 않습니다.
 
-### The learning skills
+### 학습 스킬
 
 | Skill | What it does |
 |---|---|
@@ -325,13 +257,11 @@ a passing score.
 ░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒
 ```
 
-## Read the core curriculum as a book
+## 핵심 커리큘럼을 책으로 읽기
 
-The 20-phase core curriculum under `phases/` compiles into a six-volume book series. EPUB and PDF are built by CI from the same core lesson sources and attached to every [GitHub release](https://github.com/rohitg00/ai-engineering-from-scratch/releases); the links below always resolve to the newest release. Volume numbers index the series, not versions: each copy carries a dated edition stamp, and older editions stay downloadable from their release.
+`phases/` 아래에 있는 20개 페이즈 핵심 커리큘럼은 여섯 권짜리 책으로 묶여 나옵니다. EPUB 판본과 PDF 판본은 CI가 같은 레슨 원본에서 만들어 [GitHub 릴리스](https://github.com/rohitg00/ai-engineering-from-scratch/releases)마다 첨부하며, 아래 링크는 언제나 가장 최신 릴리스를 가리킵니다. 권 번호는 판본 번호가 아니라 책의 순서를 가리킵니다. 각 파일에는 발행 날짜가 찍혀 있고, 예전 판본도 해당 릴리스에서 계속 내려받을 수 있습니다.
 
-Certification curricula are intentionally not converted into the books. Their
-AI tutor state, runnable labs, interactive figures, diagnostics, and timed mocks
-remain first-class on GitHub and the website.
+자격 과정 커리큘럼은 의도적으로 책에 포함하지 않았습니다. 자격 과정은 AI 튜터가 관리하는 학습 상태, 실행 가능한 실습, 상호작용하는 그림, 진단 평가, 시간 제한이 있는 모의고사를 그대로 살려야 하고, 이 요소들은 GitHub과 웹사이트에서만 온전히 동작하기 때문입니다.
 
 | Vol | Title | Phases | Download |
 |-----|-------|--------|----------|
@@ -342,7 +272,7 @@ remain first-class on GitHub and the website.
 | 5 | Agents · Multimodality, Protocols, Autonomy, and Swarms | 12-16 | [EPUB](https://github.com/rohitg00/ai-engineering-from-scratch/releases/latest/download/aiefs-vol5-agents.epub) · [PDF](https://github.com/rohitg00/ai-engineering-from-scratch/releases/latest/download/aiefs-vol5-agents.pdf) |
 | 6 | Production · Infrastructure, Safety, and Capstones | 17-19 | [EPUB](https://github.com/rohitg00/ai-engineering-from-scratch/releases/latest/download/aiefs-vol6-production.epub) · [PDF](https://github.com/rohitg00/ai-engineering-from-scratch/releases/latest/download/aiefs-vol6-production.pdf) |
 
-The book is the snapshot; this repository is the living edition. Every chapter ends with links back to the lesson's animated figures, quiz, and runnable code. Build locally with `python3 scripts/build_book.py` (pandoc required); pipeline details in [book/README.md](../../book/README.md).
+책은 한 시점을 찍어 둔 판본이고, 이 저장소는 계속 갱신되는 판본입니다. 모든 장의 끝에는 해당 레슨의 애니메이션 그림과 퀴즈, 실행 가능한 코드로 돌아가는 링크가 붙어 있습니다. 직접 만들어 보려면 `python3 scripts/build_book.py`를 실행하십시오. pandoc이 설치되어 있어야 합니다. 빌드 과정의 자세한 내용은 [book/README.md](../../book/README.md)에 있습니다.
 
 ```text
 ░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒
@@ -350,8 +280,7 @@ The book is the snapshot; this repository is the living edition. Every chapter e
 
 ## 모든 레슨은 결과물을 남깁니다
 
-Other curricula end with *"congratulations, you learned X."* Each lesson here ends with a
-**reusable tool** you can install or paste into your daily workflow.
+다른 커리큘럼은 *"축하합니다, X를 배웠습니다"* 라는 말로 끝납니다. 이 커리큘럼의 모든 레슨은 **다시 쓸 수 있는 도구**를 남기며, 그 도구는 여러분의 평소 작업에 바로 설치하거나 붙여넣을 수 있습니다.
 
 <table>
 <tr>
@@ -368,19 +297,17 @@ Other curricula end with *"congratulations, you learned X."* Each lesson here en
 </tr>
 </table>
 
-> Install the lot with `python3 scripts/install_skills.py <target>`. Real tools, not homework.
-> By the end of the curriculum, you have a portfolio of 523 artifacts you actually
-> understand because you built them.
+> `python3 scripts/install_skills.py <target>` 명령으로 전부 설치할 수 있습니다. 숙제가 아니라 실제로 쓰는 도구입니다. 커리큘럼을 끝낼 즈음이면 결과물 523개가 모인 포트폴리오가 생기고, 전부 직접 만든 것이므로 하나하나 무엇인지 설명할 수 있습니다.
 
-### FIG_002 · A worked sample
+### FIG_002 · 실제 예제 하나
 
-Phase 14, lesson 1: the agent loop. ~120 lines of pure Python, no dependencies.
+페이즈 14의 첫 번째 레슨은 에이전트 루프를 다룹니다. 외부 의존성 없이 순수 Python으로 약 120줄입니다.
 
 <table>
 <tr>
 <td valign="top" width="50%">
 
-**`code/agent_loop.py`** &nbsp; <sub><i>build it</i></sub>
+**`code/agent_loop.py`** &nbsp; <sub><i>직접 만든다</i></sub>
 
 ```python
 def run(query, tools):
@@ -399,7 +326,7 @@ def run(query, tools):
 </td>
 <td valign="top" width="50%">
 
-**`outputs/skill-agent-loop.md`** &nbsp; <sub><i>ship it</i></sub>
+**`outputs/skill-agent-loop.md`** &nbsp; <sub><i>결과물로 남긴다</i></sub>
 
 ```markdown
 ---
@@ -432,11 +359,11 @@ the agent went wrong and explain why...
 
 ## 목차
 
-Twenty phases. Click any phase to expand its lesson list.
+20개 페이즈입니다. 페이즈를 누르면 그 안의 레슨 목록이 펼쳐집니다.
 
 <a id="phase-0"></a>
-### Phase 0: Setup & Tooling `12 lessons`
-> Get your environment ready for everything that follows.
+### 페이즈 0: 환경 구성과 도구 `12개 레슨`
+> 이후에 이어지는 모든 내용을 실행할 수 있도록 개발 환경을 갖춥니다.
 
 | # | Lesson | Type | Lang |
 |:---:|--------|:----:|------|
@@ -835,17 +762,9 @@ Twenty phases. Click any phase to expand its lesson list.
 | 30 | [MCP Registry Supply Chain: Admission, Drift, and Rollback](../../phases/13-tools-and-protocols/30-mcp-registry-supply-chain-and-drift/) | Build | Python |
 | 31 | [MCP Conformance Engineering: Versioning, Evidence, and Operations](../../phases/13-tools-and-protocols/31-mcp-conformance-versioning-and-operations/) | Build | Python |
 
-Lessons 06-18 and 28-31 form the focused
-[Model Context Protocol (MCP) path](../../learning-paths/model-context-protocol.json). Its manifest order
-is 06, 07, 08, 09, 10, 11, 12, 13, 14, 15, 16, 18, 17, 28, 29, 30, 31. Start
-it with the host-specific `learn-mcp` invocation above. Lesson 23
-is its only optional capstone and also requires Lessons 19 and 20.
+06번부터 18번까지, 그리고 28번부터 31번까지의 레슨이 집중 경로인 [Model Context Protocol(MCP) 경로](../../learning-paths/model-context-protocol.json)를 이룹니다. 매니페스트가 정한 순서는 06, 07, 08, 09, 10, 11, 12, 13, 14, 15, 16, 18, 17, 28, 29, 30, 31입니다. 위에서 설명한 호스트별 `learn-mcp` 호출 방법으로 시작하십시오. 23번 레슨은 이 경로의 유일한 선택 캡스톤이며, 19번과 20번 레슨도 함께 마쳐야 합니다.
 
-Lessons 22 and 24-27 form the focused
-[Agent Skills learning path](../../learning-paths/agent-skills.json), from package
-contract through real-host release gates. Start it with the host-specific
-`learn-agent-skills` invocation shown above; do not follow numeric next
-navigation from 22 to 23.
+22번 레슨과 24번부터 27번까지의 레슨이 집중 경로인 [Agent Skills 학습 경로](../../learning-paths/agent-skills.json)를 이룹니다. 이 경로는 패키지 계약을 정의하는 일에서 출발해 실제 호스트에 배포하기 전의 검증 관문까지 이어집니다. 위에 나온 호스트별 `learn-agent-skills` 호출 방법으로 시작하십시오. 번호 순서를 따라 22번에서 23번으로 넘어가서는 안 됩니다.
 
 </details>
 
@@ -910,13 +829,9 @@ navigation from 22 to 23.
 | 53 | [Choose Prototype, Pilot, or Production Deliberately](../../phases/14-agent-engineering/53-prototype-pilot-or-production/) | Build | Python |
 | 54 | [Build a Feedback Ratchet with Ownership and Retirement](../../phases/14-agent-engineering/54-build-the-feedback-ratchet/) | Build | Python |
 
-Each Phase 14 workbench lesson (31-42) ships a `mission.md` briefing the agent before it opens the full lesson docs.
+페이즈 14의 워크벤치 레슨(31번부터 42번까지)에는 각각 `mission.md`가 들어 있습니다. 에이전트는 레슨 문서 전체를 열기 전에 이 파일을 먼저 읽고 과제를 파악합니다.
 
-Lessons 31-46 form the [Agent-Assisted Engineering path](../../learning-paths/using-coding-agents.json).
-Its manifest order combines the workbench foundation with task framing, planning,
-delegation, and durable feedback. Lessons 47-54 form the
-[Product Judgment and Delivery path](../../learning-paths/shaping-the-build.json), from outcome framing
-through evidence, risk, scope, measurement, staged release, and feedback ownership.
+31번부터 46번까지의 레슨이 [에이전트 협업 엔지니어링 경로](../../learning-paths/using-coding-agents.json)를 이룹니다. 이 경로의 매니페스트 순서는 워크벤치 기초 위에 과제 정의, 계획 수립, 작업 위임, 지속적인 피드백을 차례로 얹습니다. 47번부터 54번까지의 레슨은 [제품 판단과 전달 경로](../../learning-paths/shaping-the-build.json)를 이루며, 성과를 정의하는 일에서 출발해 근거 수집, 위험 파악, 범위 결정, 측정, 단계적 출시, 피드백 책임까지 이어집니다.
 
 </details>
 
@@ -1085,7 +1000,7 @@ through evidence, risk, scope, measurement, staged release, and feedback ownersh
 | 16 | [GitHub Issue-to-PR Autonomous Agent](../../phases/19-capstone-projects/16-github-issue-to-pr-agent/) | P11 P13 P14 P15 P17 | Python |
 | 17 | [Personal AI Tutor (Adaptive, Multimodal)](../../phases/19-capstone-projects/17-personal-ai-tutor/) | P5 P6 P11 P12 P14 P17 P18 | Python |
 
-**Deep-build tracks** — multi-lesson series that build a complete subsystem from scratch.
+**심화 구현 트랙**: 여러 레슨에 걸쳐 하나의 완결된 서브시스템을 맨바닥에서 만들어 내는 연속 과정입니다.
 
 | # | Project | Combines | Lang |
 |:---:|---------|----------|------|
@@ -1166,7 +1081,7 @@ through evidence, risk, scope, measurement, staged release, and feedback ownersh
 
 ## 툴킷
 
-Every lesson produces a reusable artifact. By the end you have:
+모든 레슨은 다시 쓸 수 있는 결과물을 하나씩 만들어 냅니다. 커리큘럼을 끝내면 다음을 갖게 됩니다.
 
 ```text
 outputs/
@@ -1174,30 +1089,21 @@ outputs/
 └── skills/       SKILL.md files for AI coding agents
 ```
 
-Plug them into Claude, Cursor, Codex, OpenClaw, Hermes, or any agent that
-reads a SKILL.md / AGENTS.md directory. Real tools, not homework.
+이 결과물들은 Claude, Cursor, Codex, OpenClaw, Hermes를 비롯해 SKILL.md나 AGENTS.md 디렉터리를 읽는 어떤 에이전트에도 그대로 연결할 수 있습니다. 숙제가 아니라 실제로 쓰는 도구입니다.
 
-### Install course skills into your agent
+### 커리큘럼 스킬을 에이전트에 설치하기
 
-Two skill sets, two installers:
+스킬 묶음이 두 가지이고, 설치 방법도 두 가지입니다.
 
-**The learning skills** (`start-learning`, `learn`, `course-guide`,
-`learn-mcp`, `learn-agent-skills`, `claude-certification`, `find-your-level`, and
-`check-understanding`) live under [`skills/`](../../skills/) and install into a
-supported skill-capable host with one command. Installation needs Node.js and
-`npx`, but not a repository clone or Python:
+**학습 스킬**(`start-learning`, `learn`, `course-guide`, `learn-mcp`, `learn-agent-skills`, `claude-certification`, `find-your-level`, `check-understanding`)은 [`skills/`](../../skills/) 아래에 있으며, 스킬을 지원하는 호스트에 명령 한 줄로 설치됩니다. 설치에는 Node.js와 `npx`가 필요하지만, 저장소 클론이나 Python은 필요하지 않습니다.
 
 ```bash
 npx skills add rohitg00/ai-engineering-from-scratch
 ```
 
-`skills` writes to the host and scope selected during installation, such as
-`.claude/skills/`, `.cursor/skills/`, `.codex/skills/`, or another supported
-skills folder. Verify that the selected host discovers that exact destination.
+`skills` 명령은 설치할 때 선택한 호스트와 범위에 파일을 씁니다. 예를 들면 `.claude/skills/`나 `.cursor/skills/`, `.codex/skills/`, 또는 지원되는 다른 스킬 폴더입니다. 선택한 호스트가 바로 그 경로를 실제로 인식하는지 확인하십시오.
 
-**The lesson artifacts.** The repo ships 396 skills and 99 prompts under
-`phases/**/outputs/`; install them via `scripts/install_skills.py`. Requires
-cloning the repo. Supports tag filters, dry-runs, and per-agent layouts:
+**레슨 결과물.** 이 저장소는 `phases/**/outputs/` 아래에 스킬 396개와 프롬프트 99개를 담고 있으며, `scripts/install_skills.py`로 설치합니다. 이 방법은 저장소를 클론해야 합니다. 태그로 걸러 내기, 실제로 쓰지 않고 미리 확인하기, 에이전트별 디렉터리 구조로 배치하기를 지원합니다.
 
 ```bash
 python3 scripts/install_skills.py <target>                                 # every skill, default --layout skills (nested)
@@ -1210,15 +1116,9 @@ python3 scripts/install_skills.py <target> --dry-run                       # pre
 python3 scripts/install_skills.py <target> --force                         # overwrite existing files
 ```
 
-`<target>` is the skills directory for your agent (examples:
-`~/.claude/skills/`, `~/.cursor/skills/`, `~/.config/openclaw/skills/`,
-`.skills/`, or any path your agent reads).
+`<target>`에는 사용하는 에이전트의 스킬 디렉터리를 적습니다. 예를 들면 `~/.claude/skills/`, `~/.cursor/skills/`, `~/.config/openclaw/skills/`, `.skills/` 같은 경로이며, 에이전트가 읽는 경로라면 무엇이든 됩니다.
 
-By default the script refuses to overwrite an existing destination and exits
-with code 1 after listing every colliding path. Use `--dry-run` to preview
-collisions or `--force` to overwrite. Every non-dry-run run writes a
-`manifest.json` in the target with the full inventory grouped by type and
-phase. Pick the layout your agent reads:
+이 스크립트는 기본적으로 이미 있는 대상 파일을 덮어쓰지 않으며, 충돌하는 경로를 모두 출력한 뒤 종료 코드 1로 끝납니다. 충돌을 미리 확인하려면 `--dry-run`을 쓰고, 덮어쓰려면 `--force`를 쓰십시오. 미리 확인하는 경우가 아니라면 실행할 때마다 대상 디렉터리에 `manifest.json`을 남기며, 이 파일에는 설치된 항목 전체가 유형별과 페이즈별로 정리되어 있습니다. 사용하는 에이전트가 읽는 디렉터리 구조를 고르십시오.
 
 | `--layout`  | Path written |
 |---|---|
@@ -1226,10 +1126,9 @@ phase. Pick the layout your agent reads:
 | `by-phase`  | `<target>/phase-NN/<name>.md` |
 | `flat`      | `<target>/<name>.md` |
 
-### Drop the agent workbench into your own repo
+### 에이전트 워크벤치를 여러분의 저장소에 설치하기
 
-The Phase 14 capstone ships a reusable Agent Workbench pack (AGENTS.md, schemas,
-init / verify / handoff scripts). Scaffold it into any repo with:
+페이즈 14의 캡스톤은 다시 쓸 수 있는 Agent Workbench 묶음을 제공합니다. 여기에는 AGENTS.md와 스키마, 그리고 초기화·검증·인계 스크립트가 들어 있습니다. 아래 명령으로 어떤 저장소에든 설치할 수 있습니다.
 
 ```bash
 python3 scripts/scaffold_workbench.py path/to/your-repo            # full pack + seeds
@@ -1238,16 +1137,11 @@ python3 scripts/scaffold_workbench.py path/to/your-repo --dry-run  # preview onl
 python3 scripts/scaffold_workbench.py path/to/your-repo --force    # overwrite
 ```
 
-You get the seven workbench surfaces wired up, a starter `task_board.json`,
-and a fresh `agent_state.json` at `schema_version: 1`. From there: edit the
-task, edit `AGENTS.md`, run `scripts/init_agent.py`, hand the contract to
-your agent. The pack source lives at
-`phases/14-agent-engineering/42-agent-workbench-capstone/outputs/agent-workbench-pack/`.
+설치하면 워크벤치를 이루는 일곱 개 요소가 서로 연결된 상태로 생기고, 시작용 `task_board.json`과 `schema_version: 1`인 새 `agent_state.json`도 함께 만들어집니다. 그다음에는 과제 내용을 수정하고, `AGENTS.md`를 수정하고, `scripts/init_agent.py`를 실행한 뒤, 완성된 계약을 에이전트에 넘기면 됩니다. 이 묶음의 원본은 `phases/14-agent-engineering/42-agent-workbench-capstone/outputs/agent-workbench-pack/`에 있습니다.
 
-### Browse the entire course as JSON
+### 커리큘럼 전체를 JSON으로 살펴보기
 
-`scripts/build_catalog.py` walks every phase, every lesson, every artifact on
-disk and writes `catalog.json` at the repo root. One file, every course truth.
+`scripts/build_catalog.py`는 디스크에 있는 모든 페이즈와 모든 레슨, 모든 결과물을 훑어서 저장소 최상위에 `catalog.json`을 씁니다. 커리큘럼의 모든 사실이 이 파일 하나에 담깁니다.
 
 ```bash
 python3 scripts/build_catalog.py               # writes <repo>/catalog.json
@@ -1255,23 +1149,13 @@ python3 scripts/build_catalog.py --stdout      # to stdout, do not touch repo
 python3 scripts/build_catalog.py --out path/to/file.json
 ```
 
-The catalog is filesystem-derived, not README-derived, so counts always match
-what is actually on disk. Use it for site builds, downstream tooling, or to
-verify the README counts have not drifted. Schema is documented at the top of
-the script.
+이 카탈로그는 README가 아니라 파일 시스템에서 만들어지므로, 집계된 개수가 언제나 디스크에 실제로 있는 내용과 일치합니다. 사이트를 빌드하거나 후속 도구를 만들 때, 또는 README에 적힌 개수가 어긋나지 않았는지 확인할 때 사용하십시오. 스키마는 스크립트 맨 위에 설명되어 있습니다.
 
-A GitHub Action (`.github/workflows/curriculum.yml`) rebuilds `catalog.json`
-on every PR and fails the build if the committed file is stale. After editing
-any lesson, run `python3 scripts/build_catalog.py` and commit the result, or
-CI will reject the PR. The same workflow runs `audit_lessons.py` in
-warn-only mode (so existing drift does not block contributors).
+GitHub Action(`.github/workflows/curriculum.yml`)이 모든 풀 리퀘스트에서 `catalog.json`을 다시 만들며, 커밋된 파일이 최신 상태가 아니면 빌드를 실패시킵니다. 레슨을 수정했다면 `python3 scripts/build_catalog.py`를 실행하고 그 결과를 커밋하십시오. 그렇게 하지 않으면 CI가 풀 리퀘스트를 거부합니다. 같은 워크플로가 `audit_lessons.py`도 실행하지만, 경고만 출력하는 모드로 실행하므로 이미 존재하는 불일치가 기여자를 막지는 않습니다.
 
-### Smoke-check every lesson's Python code
+### 모든 레슨의 Python 코드를 빠르게 점검하기
 
-`scripts/lesson_run.py` byte-compiles every `.py` file under each lesson's
-`code/` directory. Default mode is syntax-check only — no execution, no API
-keys, no heavy ML deps required. Catches the regressions contributors
-introduce most often (bad indentation, broken f-strings, stray edits).
+`scripts/lesson_run.py`는 각 레슨의 `code/` 디렉터리에 있는 모든 `.py` 파일을 바이트코드로 컴파일해 봅니다. 기본 모드는 문법 검사만 수행합니다. 코드를 실행하지 않고, API 키도 필요 없으며, 무거운 머신러닝 의존성도 설치할 필요가 없습니다. 기여자가 가장 자주 일으키는 문제인 들여쓰기 오류, 깨진 f-string, 실수로 남은 수정 자국을 잡아냅니다.
 
 ```bash
 python3 scripts/lesson_run.py                  # syntax-check the whole curriculum
@@ -1281,15 +1165,9 @@ python3 scripts/lesson_run.py --strict         # exit 1 if any lesson fails
 python3 scripts/lesson_run.py --execute        # actually run, 10s timeout per lesson
 ```
 
-`--execute` runs each lesson's `code/main.py` (or the first `.py` file) with a
-10-second timeout. Lessons whose entry file starts with a `# requires: pkg1,
-pkg2` comment listing non-stdlib deps are skipped with reason `needs <deps>`.
-The script is opt-in and not wired into CI.
+`--execute` 옵션을 주면 각 레슨의 `code/main.py`를, 그 파일이 없으면 첫 번째 `.py` 파일을 10초 제한을 두고 실행합니다. 진입 파일 첫 줄에 표준 라이브러리 밖의 의존성을 적은 `# requires: pkg1, pkg2` 주석이 있으면, 그 레슨은 `needs <deps>`라는 이유와 함께 건너뜁니다. 이 옵션은 직접 지정해야 동작하며 CI에는 연결되어 있지 않습니다.
 
-Stdlib only, Python 3.10+. Set `LINK_CHECK_SKIP=domain1,domain2` to override
-the default skip-list (`twitter.com`, `x.com`, `linkedin.com`,
-`instagram.com`, `medium.com` — domains that aggressively block automated
-HEAD/GET).
+표준 라이브러리만 사용하며, Python 3.10 이상이 필요합니다. 기본 제외 목록을 바꾸려면 `LINK_CHECK_SKIP=domain1,domain2`를 설정하십시오. 기본값으로 제외되는 도메인은 `twitter.com`, `x.com`, `linkedin.com`, `instagram.com`, `medium.com`이며, 모두 자동화된 HEAD 요청과 GET 요청을 강하게 차단하는 곳입니다.
 
 ## 어디서 시작할까
 
@@ -1317,14 +1195,11 @@ HEAD/GET).
 <tr>
 <td valign="top">
 
-> *"The hottest new programming language is English."*<br/>
-> — **Andrej Karpathy** ([tweet](https://x.com/karpathy/status/1617979122625712128))
+> *"요즘 가장 뜨거운 새 프로그래밍 언어는 영어다."*<br/> — **Andrej Karpathy** ([트윗](https://x.com/karpathy/status/1617979122625712128))
 >
-> *"Software engineering is being remade in front of our eyes."*<br/>
-> — **Boris Cherny**, creator of Claude Code
+> *"소프트웨어 엔지니어링이 우리 눈앞에서 새로 만들어지고 있다."*<br/> — **Boris Cherny**, Claude Code를 만든 사람
 >
-> *"Models will keep getting better. The skill that compounds is **knowing what to build**."*<br/>
-> — Industry consensus, 2026
+> *"모델은 앞으로도 계속 좋아진다. 쌓이는 실력은 **무엇을 만들지 아는 능력**이다."*<br/> — 2026년 업계의 공통된 견해
 
 </td>
 <td valign="top">
@@ -1357,7 +1232,7 @@ HEAD/GET).
 | Glossary | [glossary/terms.md](../../glossary/terms.md) |
 | Code of conduct | [CODE_OF_CONDUCT.md](../../CODE_OF_CONDUCT.md) |
 
-Before submitting a lesson, run the invariant check:
+레슨을 제출하기 전에 규칙 검사를 실행하십시오.
 
 ```bash
 python3 scripts/audit_lessons.py           # full curriculum
@@ -1365,10 +1240,7 @@ python3 scripts/audit_lessons.py --phase 14  # single phase
 python3 scripts/audit_lessons.py --json    # CI-friendly output
 ```
 
-Exit code is non-zero when any rule fails. Rules (L001–L010) validate directory
-shape, `docs/en.md` presence + H1, `code/` non-emptiness, `quiz.json` schema
-(rejects the legacy `q/choices/answer` keys that caused issue #102), and
-relative links inside lesson docs.
+규칙 가운데 하나라도 실패하면 종료 코드가 0이 아닌 값이 됩니다. L001번부터 L010번까지의 규칙은 디렉터리 구조, `docs/en.md`의 존재 여부와 H1 제목, `code/` 디렉터리가 비어 있지 않은지, `quiz.json`의 스키마, 그리고 레슨 문서 안의 상대 경로 링크를 검사합니다. `quiz.json` 검사는 이슈 #102를 일으켰던 옛 `q`/`choices`/`answer` 키를 거부합니다.
 
 ```text
 ░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒
@@ -1386,7 +1258,7 @@ relative links inside lesson docs.
 ░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒░░░▒▒▒
 ```
 
-If this manual helped you, star the repo. It keeps the project alive.
+이 교재가 도움이 되었다면 저장소에 스타를 눌러 주십시오. 그것이 이 프로젝트를 계속 살아 있게 합니다.
 
 ## 라이선스
 

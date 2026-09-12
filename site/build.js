@@ -16,6 +16,8 @@ const REPO_ROOT = path.resolve(__dirname, '..');
 const README_PATH = path.join(REPO_ROOT, 'README.md');
 const ROADMAP_PATH = path.join(REPO_ROOT, 'ROADMAP.md');
 const GLOSSARY_PATH = path.join(REPO_ROOT, 'glossary', 'terms.md');
+const glossaryTranslationPath = code => path.join(REPO_ROOT, 'glossary', `terms.${code}.md`);
+const phaseNamesPath = code => path.join(REPO_ROOT, 'i18n', code, 'phases.json');
 const OUTPUT_PATH = path.join(__dirname, 'data.js');
 const CERTIFICATIONS_PATH = path.join(REPO_ROOT, 'certifications');
 const CERTIFICATION_OUTPUT_PATH = path.join(__dirname, 'certification-data.js');
@@ -99,6 +101,44 @@ function lessonPath(url) {
   if (!url) return null;
   const m = url.match(/(phases\/[^/]+\/[^/]+)\/?$/);
   return m ? m[1] : null;
+}
+
+// Languages whose lesson markdown is hand-authored on this branch
+// (languages.json → "lessons": "human"). Their translated lesson, phase, and
+// glossary strings are baked into data.js under a per-language field suffix, so
+// the site can render them without a second fetch. Every field falls back to
+// English when a translation is absent, which is what lets a language ship
+// partial coverage.
+function humanLanguages() {
+  const registryPath = path.join(REPO_ROOT, 'languages.json');
+  if (!fs.existsSync(registryPath)) return [];
+  const registry = JSON.parse(fs.readFileSync(registryPath, 'utf8'));
+  return registry.languages
+    .filter(entry => entry.lessons === 'human')
+    .map(entry => ({ code: entry.code, suffix: fieldSuffix(entry.code) }));
+}
+
+// 'ko' → 'Ko', 'zh-TW' → 'ZhTW'. The suffix is appended to a field name
+// (name → nameKo) so one record can carry English plus every translation.
+function fieldSuffix(code) {
+  return String(code)
+    .split(/[^A-Za-z0-9]+/)
+    .filter(Boolean)
+    .map(part => part.charAt(0).toUpperCase() + part.slice(1))
+    .join('');
+}
+
+// Translated phase names/descriptions, keyed by phase id, from
+// i18n/<lang>/phases.json. Absent file → that language keeps English.
+function loadPhaseNames(code) {
+  const file = phaseNamesPath(code);
+  if (!fs.existsSync(file)) return {};
+  try {
+    return JSON.parse(fs.readFileSync(file, 'utf8'));
+  } catch (error) {
+    console.warn(`   ! ignoring malformed ${path.relative(REPO_ROOT, file)}: ${error.message}`);
+    return {};
+  }
 }
 
 // ─── Parse ROADMAP.md for lesson statuses ────────────────────────────
@@ -718,28 +758,50 @@ function parseCurriculumPrereqs(content, phases) {
  * Both fields are empty strings when the file is absent or has no
  * matching content — expected for planned lessons with no docs yet.
  */
-function extractLessonMeta(relPath) {
-  const docPath = path.join(REPO_ROOT, relPath, 'docs', 'en.md');
+function extractLessonMeta(relPath, languages) {
   const result = { summary: '', keywords: '' };
+  for (const { suffix } of languages) {
+    result['summary' + suffix] = '';
+    result['keywords' + suffix] = '';
+    result['name' + suffix] = '';
+  }
+  readDocMeta(path.join(REPO_ROOT, relPath, 'docs', 'en.md'), result, '');
+  for (const { code, suffix } of languages) {
+    readDocMeta(path.join(REPO_ROOT, relPath, 'docs', `${code}.md`), result, suffix);
+  }
+  return result;
+}
+
+/**
+ * Fill result.summary<suffix> / keywords<suffix> from a single doc.
+ * A translated doc (any non-empty suffix) also yields name<suffix> from its H1,
+ * which is how a lesson gets a translated title in the catalog.
+ * Missing file → leaves fields empty (expected for planned lessons).
+ */
+function readDocMeta(docPath, result, suffix) {
   try {
     const lines = fs.readFileSync(docPath, 'utf8').split(/\r?\n/);
     const h3s = [];
+    let gotSummary = false;
     for (const raw of lines) {
       const line = raw.trim();
-      if (!result.summary && line.startsWith('> ') && line.length > 3) {
+      if (suffix && !result['name' + suffix] && line.startsWith('# ')) {
+        result['name' + suffix] = line.slice(2).trim();
+      }
+      if (!gotSummary && line.startsWith('> ') && line.length > 3) {
         const s = line.slice(2).trim();
-        result.summary = s.length > 180 ? s.slice(0, 177) + '…' : s;
+        result['summary' + suffix] = s.length > 180 ? s.slice(0, 177) + '…' : s;
+        gotSummary = true;
       }
       if (line.startsWith('### ')) {
         const heading = line.slice(4).trim();
         if (heading) h3s.push(heading);
       }
     }
-    if (h3s.length) result.keywords = h3s.join(' · ');
+    if (h3s.length) result['keywords' + suffix] = h3s.join(' · ');
   } catch (_) {
     // File absent or unreadable — expected for planned lessons.
   }
-  return result;
 }
 
 function normalizeWhitespace(value) {
@@ -1599,6 +1661,62 @@ function glossaryLinks(value, fieldLabel, lineNumber, term) {
   return links;
 }
 
+// Fields of a glossary entry that carry translatable prose. The term itself,
+// its category, aliases, related terms, lesson links, and sources stay English.
+const GLOSSARY_TRANSLATED_FIELDS = ['says', 'means', 'whyItMatters', 'example', 'confusion', 'whyCalled'];
+
+const GLOSSARY_FIELD_LABELS = {
+  'what people say': 'says',
+  'what it actually means': 'means',
+  'why it matters': 'whyItMatters',
+  'in practice': 'example',
+  'common confusion': 'confusion',
+  "why it's called that": 'whyCalled',
+  'why it is called that': 'whyCalled'
+};
+
+/**
+ * Parse a translated glossary file leniently.
+ *
+ * parseGlossary() validates the canonical English glossary and throws when a
+ * required field such as Category is missing. A translation carries prose only,
+ * so it must not be held to that contract: a translator may translate some
+ * entries and leave the rest for later. This reader therefore collects whatever
+ * translated fields are present and ignores everything else, and it returns an
+ * empty list when the file does not exist.
+ */
+function parseGlossaryTranslation(filePath) {
+  let content;
+  try {
+    content = fs.readFileSync(filePath, 'utf8');
+  } catch (_) {
+    return []; // A translation is optional; the site falls back to English.
+  }
+
+  const entries = [];
+  let current = null;
+  content.split(/\r?\n/).forEach(line => {
+    const termMatch = line.match(/^###\s+(.+?)\s*$/);
+    if (termMatch) {
+      if (current) entries.push(current);
+      current = { term: termMatch[1].trim() };
+      return;
+    }
+    if (/^#{1,2}\s+/.test(line)) {
+      if (current) entries.push(current);
+      current = null;
+      return;
+    }
+    if (!current) return;
+    const fieldMatch = line.match(/^\s*-\s+\*\*([^*]+):\*\*\s*(.*?)\s*$/);
+    if (!fieldMatch) return;
+    const key = GLOSSARY_FIELD_LABELS[fieldMatch[1].trim().toLowerCase()];
+    if (key && fieldMatch[2]) current[key] = fieldMatch[2];
+  });
+  if (current) entries.push(current);
+  return entries;
+}
+
 function parseGlossary(content) {
   const terms = [];
   let currentTerm = null;
@@ -1996,13 +2114,18 @@ function writeLangs() {
   let langs = [{ code: 'en', native: 'English' }];
   if (fs.existsSync(regPath)) {
     const reg = JSON.parse(fs.readFileSync(regPath, 'utf8'));
-    // Only offer languages the site can actually serve: English (source) plus
-    // the ci:true set the translate workflow builds lessons for. The full
-    // registry is 40 languages, but picking an untranslated one just 404s to
-    // English, so it must not appear in the switcher.
+    // Only offer languages the site can actually serve: English (source), the
+    // ci:true set the translate workflow builds lessons for, and any language
+    // whose lessons are hand-authored on main. The full registry is 40
+    // languages, but picking an untranslated one just 404s to English, so it
+    // must not appear in the switcher. `lessons` rides along so lesson.html
+    // knows to read a hand-authored file from this repo instead of the
+    // translations branch.
     langs = reg.languages
-      .filter(l => l.source || l.ci)
-      .map(l => ({ code: l.code, native: l.native }));
+      .filter(l => l.source || l.ci || l.lessons === 'human')
+      .map(l => (l.lessons
+        ? { code: l.code, native: l.native, lessons: l.lessons }
+        : { code: l.code, native: l.native }));
   }
   const js = '// Auto-generated by build.js from languages.json — do not edit.\n'
     + 'window.AIFS_LANGS = ' + JSON.stringify(langs) + ';\n';
@@ -2030,8 +2153,43 @@ function build() {
   console.log('Parsing focused learning paths...');
   const learningPaths = parseLearningPaths(REPO_ROOT, phases);
 
+  // Attach translated phase names/descriptions (English fallback when absent).
+  const translatedLangs = humanLanguages();
+  for (const { code, suffix } of translatedLangs) {
+    const names = loadPhaseNames(code);
+    for (const phase of phases) {
+      const translated = names[phase.id] || names[String(phase.id)];
+      if (!translated) continue;
+      if (translated.name) phase['name' + suffix] = translated.name;
+      if (translated.desc) phase['desc' + suffix] = translated.desc;
+    }
+  }
+
   console.log('🔍 Parsing glossary/terms.md...');
   const glossaryTerms = parseGlossary(glossary);
+
+  const glossaryMatched = {};
+  for (const { code, suffix } of translatedLangs) {
+    console.log(`🔍 Parsing glossary/terms.${code}.md...`);
+    const translatedTerms = parseGlossaryTranslation(glossaryTranslationPath(code));
+    const byTerm = {};
+    translatedTerms.forEach(t => { byTerm[t.term.trim().toLowerCase()] = t; });
+    let matched = 0;
+    glossaryTerms.forEach(t => {
+      const translation = byTerm[t.term.trim().toLowerCase()];
+      if (!translation) return;
+      // The term name stays English because it is the anchor and the search key;
+      // only the prose fields are translated.
+      let any = false;
+      GLOSSARY_TRANSLATED_FIELDS.forEach(field => {
+        if (!translation[field]) return;
+        t[field + suffix] = translation[field];
+        any = true;
+      });
+      if (any) matched++;
+    });
+    glossaryMatched[code] = matched;
+  }
 
   console.log('🔍 Discovering outputs + Phase 14 missions...');
   const artifacts = discoverArtifacts();
@@ -2046,9 +2204,15 @@ function build() {
     for (const lesson of phase.lessons) {
       if (lesson.url) {
         const relPath = lesson.url.replace(GITHUB_BASE, '').replace(/\/+$/, '');
-        const meta = extractLessonMeta(relPath);
-        if (meta.summary)  { lesson.summary  = meta.summary;  summarized++;   }
-        if (meta.keywords) { lesson.keywords = meta.keywords; withKeywords++; }
+        const meta = extractLessonMeta(relPath, translatedLangs);
+        if (meta.summary)    { lesson.summary    = meta.summary;    summarized++;   }
+        if (meta.keywords)   { lesson.keywords   = meta.keywords;   withKeywords++; }
+        for (const { suffix } of translatedLangs) {
+          for (const field of ['name', 'summary', 'keywords']) {
+            const value = meta[field + suffix];
+            if (value) lesson[field + suffix] = value;
+          }
+        }
       }
     }
   }
@@ -2069,7 +2233,11 @@ function build() {
   console.log(`   Lessons: ${totalLessons}`);
   console.log(`   Complete: ${completeLessons}`);
   console.log(`   Summaries: ${summarized}, Keywords: ${withKeywords}`);
-  console.log(`   Glossary terms: ${glossaryTerms.length}`);
+  const glossaryCoverage = translatedLangs
+    .map(({ code }) => `${code}: ${glossaryMatched[code] || 0}`)
+    .join(', ');
+  console.log(`   Glossary terms: ${glossaryTerms.length}`
+    + (glossaryCoverage ? ` (${glossaryCoverage})` : ''));
   console.log(`   Artifacts: ${artifacts.length}`);
   console.log(`   Curriculum edges: ${Object.values(roadmapPrereqs).reduce((sum, ids) => sum + ids.length, 0)}`);
   console.log(`   Focused learning paths: ${learningPaths.length}`);

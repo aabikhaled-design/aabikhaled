@@ -1,4 +1,11 @@
 (function () {
+  // Language-aware field picker. Falls back to English when i18n is absent
+  // or the translated field is missing.
+  function pick(obj, field) {
+    if (window.AIFSi18n && window.AIFSi18n.pick) return window.AIFSi18n.pick(obj, field);
+    return (obj && obj[field] != null) ? obj[field] : '';
+  }
+
   var root = document.documentElement;
   var stored = localStorage.getItem('theme');
   if (stored) {
@@ -22,22 +29,42 @@
     initFadeObserver();
   });
 
+  // Language-aware UI label lookup; falls back to the key when i18n is absent.
+  function t(key) {
+    if (window.AIFSi18n && window.AIFSi18n.t) return window.AIFSi18n.t(key);
+    return key;
+  }
+
   function populateCurriculumSummary() {
     if (typeof PHASES === 'undefined' || !Array.isArray(PHASES)) return;
     var lessonTotal = PHASES.reduce(function (total, phase) {
       return total + (Array.isArray(phase.lessons) ? phase.lessons.length : 0);
     }, 0);
+    var lessonWord = t('count.lessons');
+    var phaseWord = t('count.phases');
     var values = {
-      mastheadLessonCount: lessonTotal + ' lessons',
-      mastheadPhaseCount: PHASES.length + ' phases',
-      prefaceLessonCount: lessonTotal + ' lessons',
-      prefacePhaseCount: PHASES.length + ' phases'
+      mastheadLessonCount: lessonTotal + ' ' + lessonWord,
+      mastheadPhaseCount: PHASES.length + ' ' + phaseWord,
+      prefaceLessonCount: lessonTotal + ' ' + lessonWord,
+      prefacePhaseCount: PHASES.length + ' ' + phaseWord
     };
     Object.keys(values).forEach(function (id) {
       var target = document.getElementById(id);
       if (target) target.textContent = values[id];
     });
   }
+
+  // Re-render data-driven sections when the site language changes.
+  window.addEventListener('aifs:langchange', function () {
+    populateCurriculumSummary();
+    populateStats();
+    renderPhases();
+    initStaggerIndex();
+    if (currentPhaseIdx >= 0) {
+      var overlay = document.getElementById('modalOverlay');
+      if (overlay && overlay.classList.contains('open')) openModal(currentPhaseIdx);
+    }
+  });
 
   function updateThemeIcon() {
     var icon = document.getElementById('themeIcon');
@@ -148,7 +175,7 @@
       var num = String(p.id).padStart(2, '0');
       html += '<div class="toc-row" data-phase="' + i + '" role="button" tabindex="0" aria-haspopup="dialog" aria-label="Open Phase ' + num + ': ' + escapeHtml(p.name) + '">';
       html += '<span class="toc-num">' + roman + '.</span>';
-      html += '<div><span class="toc-status ' + statusClass + '"></span><span class="toc-name">' + escapeHtml(p.name) + '</span></div>';
+      html += '<div><span class="toc-status ' + statusClass + '"></span><span class="toc-name">' + escapeHtml(pick(p, 'name')) + '</span></div>';
       html += '<span class="toc-meta">' + done + ' / ' + total + '</span>';
       html += '<span class="toc-meta">' + num + '</span>';
       html += '</div>';
@@ -265,8 +292,8 @@
     modalReturnFocus = document.activeElement;
 
     document.getElementById('modalPhaseNum').textContent = 'PHASE ' + String(p.id).padStart(2, '0');
-    document.getElementById('modalTitle').textContent = p.name;
-    document.getElementById('modalDesc').textContent = p.desc;
+    document.getElementById('modalTitle').textContent = pick(p, 'name');
+    document.getElementById('modalDesc').textContent = pick(p, 'desc');
 
     renderModalLessons(p);
 
@@ -299,23 +326,23 @@
 
       var canOpen = (l.status === 'complete' || userComplete) && lessonPath;
       var lessonUrl = canOpen ? 'lesson?path=' + encodeURIComponent(lessonPath) : '';
-      var lessonLabel = escapeHtml(l.name);
+      var lessonLabel = escapeHtml(pick(l, 'name'));
       var lessonMeta = '<span class="modal-lesson-meta"><span class="modal-lesson-type" data-type="' + escapeHtml(l.type) + '"' + (l.combines ? ' title="Combines: ' + escapeHtml(l.combines) + '"' : '') + '>' + escapeHtml(l.type) + '</span><span aria-hidden="true">·</span><span class="modal-lesson-lang">' + escapeHtml(l.lang) + '</span></span>';
 
       html += '<div class="modal-lesson' + (userComplete ? ' user-done' : '') + '">';
       if (canOpen) {
-        html += '<a href="' + lessonUrl + '" class="modal-lesson-open" aria-label="Open lesson: ' + lessonLabel + '">';
+        html += '<a href="' + lessonUrl + '" class="modal-lesson-open" aria-label="' + t('modal.openAria') + ': ' + lessonLabel + '">';
         html += '<span class="modal-lesson-copy"><span class="modal-lesson-name">' + lessonLabel + '</span>' + lessonMeta + '</span>';
-        html += '<span class="modal-lesson-cta">' + (userComplete ? 'Review' : 'Open lesson') + '<span aria-hidden="true">→</span></span></a>';
+        html += '<span class="modal-lesson-cta">' + (userComplete ? t('modal.review') : t('modal.open')) + '<span aria-hidden="true">\u2192</span></span></a>';
       } else {
         html += '<span class="modal-lesson-open is-unavailable" aria-disabled="true">';
         html += '<span class="modal-lesson-copy"><span class="modal-lesson-name">' + lessonLabel + '</span>' + lessonMeta + '</span>';
-        html += '<span class="modal-lesson-cta">Coming soon</span></span>';
+        html += '<span class="modal-lesson-cta">' + t('modal.comingSoon') + '</span></span>';
       }
 
       var toggleHtml = '';
       if (hasProgress && canOpen) {
-        toggleHtml = '<button type="button" class="modal-lesson-toggle' + (userComplete ? ' done' : '') + '" data-path="' + lessonPath + '" title="' + (userComplete ? 'Mark as not done' : 'Mark complete') + '" aria-label="' + (userComplete ? 'Mark as not done' : 'Mark complete') + '"><span class="modal-lesson-check" aria-hidden="true">' + (userComplete ? '✓' : '') + '</span><span class="modal-lesson-toggle-label">' + (userComplete ? 'Done' : 'Mark done') + '</span></button>';
+        toggleHtml = '<button type="button" class="modal-lesson-toggle' + (userComplete ? ' done' : '') + '" data-path="' + lessonPath + '" title="' + (userComplete ? t('modal.markUndone') : t('modal.markDone')) + '" aria-label="' + (userComplete ? t('modal.markUndone') : t('modal.markDone')) + '"><span class="modal-lesson-check" aria-hidden="true">' + (userComplete ? '✓' : '') + '</span><span class="modal-lesson-toggle-label">' + (userComplete ? t('modal.done') : t('modal.markDone')) + '</span></button>';
       }
       html += toggleHtml;
       html += '</div>';

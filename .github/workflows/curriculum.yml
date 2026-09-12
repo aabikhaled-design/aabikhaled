@@ -14,6 +14,7 @@ on:
       - "scripts/debias_certification_questions.py"
       - "scripts/debias_quizzes.py"
       - "scripts/build_readme_i18n.py"
+      - "scripts/check_translation_sync.py"
       - "scripts/readme_translations.py"
       - "scripts/build_catalog.py"
       - "scripts/check_readme_counts.py"
@@ -51,6 +52,7 @@ on:
       - "scripts/debias_certification_questions.py"
       - "scripts/debias_quizzes.py"
       - "scripts/build_readme_i18n.py"
+      - "scripts/check_translation_sync.py"
       - "scripts/readme_translations.py"
       - "scripts/build_catalog.py"
       - "scripts/check_readme_counts.py"
@@ -92,6 +94,8 @@ jobs:
           python-version: "3.12"
       - name: run scripts/audit_lessons.py
         run: python3 scripts/audit_lessons.py
+      - name: hand-authored lesson translations track the English source
+        run: python3 scripts/check_translation_sync.py
       - name: run scripts/audit_certifications.py
         run: python3 scripts/audit_certifications.py
       - name: certification remediation references are complete

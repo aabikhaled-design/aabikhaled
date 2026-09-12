@@ -143,6 +143,11 @@
       applyDir(lang);
       updateButton();
       close(true);
+      // Broadcast so the UI-label layer (i18n.js) and any data-driven section
+      // can re-render without a reload.
+      try {
+        window.dispatchEvent(new CustomEvent('aifs:langchange', { detail: { lang: lang } }));
+      } catch (_) {}
       if (typeof window.AIFS_onLangChange === 'function') window.AIFS_onLangChange(lang);
     }
 

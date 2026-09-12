@@ -1,5 +1,5 @@
 {
-  "_comment": "Canonical language registry. English is the source. Adding a language here wires it into the translation script (scripts/translate_lessons.py) and the site switcher (via site/build.js -> site/langs.js). code = BCP-47-ish tag used in filenames and URLs; name = English name for the translation prompt; native = label shown in the switcher; ci = true means the auto push-triggered workflow builds this language (workflow_dispatch can still request any).",
+  "_comment": "Canonical language registry. English is the source. Adding a language here wires it into the translation script (scripts/translate_lessons.py) and the site switcher (via site/build.js -> site/langs.js). code = BCP-47-ish tag used in filenames and URLs; name = English name for the translation prompt; native = label shown in the switcher; ci = true means the auto push-triggered workflow builds this language (workflow_dispatch can still request any); lessons = \"human\" means the lesson markdown is hand-authored on main at phases/<lesson>/docs/<code>.md, so the machine-translation workflow never builds it and the site reads it from this branch.",
   "languages": [
     {
       "code": "en",
@@ -91,7 +91,8 @@
       "code": "ko",
       "name": "Korean",
       "native": "한국어",
-      "nllb": "kor_Hang"
+      "nllb": "kor_Hang",
+      "lessons": "human"
     },
     {
       "code": "it",
